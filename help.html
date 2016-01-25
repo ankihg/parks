@@ -4,8 +4,27 @@
 </head>
 <body>
 
+  <script id='park-index-template'  type='text/x-handlebars-template'>
+    <div class='row'>
+      <div class='one-half column'>
+
+      </div>
+
+      <div class='one-half column'>
+        <h1>{{name}}</h1>
+        <h4>{{address}}</h4>
+
+      </div>
+
+    </div>
+  </script>
+
+  <div id="parks"></div>
+
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.4/handlebars.js"></script>
+
 
   <script src="/scripts/park.js"></script>
   <script>

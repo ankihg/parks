@@ -76,10 +76,16 @@ Park.load = function(rawData) {
     return p.name;
   }));
 
-  // Park.all.forEach(function(p) {
-  //   $('#parks').append(p.toHTML());
-  // });
+  Park.all.forEach(function(p) {
+    $('#parks').append(p.toParkIndexHTML());
+  });
 };
+
+  Park.prototype.toParkIndexHTML = function() {
+    var template = Handlebars.compile($('#park-index-template').text());
+
+    return template(this);;
+  };
 
 
   module.Park = Park;
