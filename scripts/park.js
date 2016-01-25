@@ -18,6 +18,7 @@
   };
 
   Park.all = [];
+  Park.toDisplay = [];
 
 Park.fetchAll = function(callNext) {
   if (localStorage.rawData) {
@@ -73,9 +74,17 @@ Park.load = function(rawData) {
 
   var n = Math.min(10, Park.all.length);
   for (var i=0; i<n; i++ ) {
-    Park.all[i].makeForIndex();
+    Park.toDisplay.push(Park.all[i]);
   }
+
+  Park.display();
 };
+
+Park.display = function() {
+  Park.toDisplay.map(function(p) {
+    p.makeForIndex();
+  });
+}
 
   Park.prototype.makeForIndex = function() {
     $('#park-info').append(this.toParkIndexHTML());
@@ -103,6 +112,23 @@ Park.load = function(rawData) {
           }
         });
     map.setStreetView(panorama);
+  };
+
+  Park.allFeatures = function() {
+    return Park.all.map(function(p) {
+      return p.features;
+    })
+    .reduce(function(uniqueFeatures, parkFeatures) {
+      parkFeatures.filter(function(feature) {
+        return uniqueFeatures.indexOf(feature) < 0;
+      }).forEach(function (feature) {
+        uniqueFeatures.push(feature);
+      });
+      return uniqueFeatures;
+    }, []);
+  };
+
+  Park.allWithFeature = function(feature) {
 
   }
 
