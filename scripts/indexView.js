@@ -3,13 +3,19 @@
   var indexView = {};
 
   indexView.index = function() {
-    populateFilters();
+    populateFilter();
   };
 
-  function populateFilters() {
+  function populateFilter() {
     Park.allFeatures().forEach(function(feature) {
       var optionTag = '<option value="' + feature + '">' + feature + '</option>';
       $('#feature-filter').append(optionTag);
+    });
+  };
+
+  function handleFilter() {
+    $('#feature-filter').on('change', function() {
+
     });
   };
 
