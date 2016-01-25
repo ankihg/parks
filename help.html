@@ -1,17 +1,22 @@
 <html>
 <head>
+  <link rel="stylesheet" href="styles/skeleton.css">
+  <script src="http://maps.googleapis.com/maps/api/js"></script>
+  <link rel="stylesheet" href="styles/base.css">
 
 </head>
 <body>
 
   <script id='park-index-template'  type='text/x-handlebars-template'>
-    <div class='row'>
-      <div class='one-half column'>
-
+    <div class='row park-index'>
+      <div id='street-view' class='one-half column'>
+        <div id="{{this.id}}-map" class='map'></div>
+        <div id="{{this.id}}-pano" class='pano'></div>
       </div>
 
       <div class='one-half column'>
         <h1>{{name}}</h1>
+        <h4>{{features}}</h4>
         <h4>{{address}}</h4>
 
       </div>
