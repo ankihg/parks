@@ -1,0 +1,23 @@
+{
+  "name": "parks",
+  "version": "1.0.0",
+  "description": "",
+  "main": "/parks.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ankihg/parks.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ankihg/parks/issues"
+  },
+  "homepage": "https://github.com/ankihg/parks#readme",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
+}
