@@ -16,7 +16,6 @@
     // console.log(this);
   };
 
-
   Park.all = [];
 
 Park.fetchAll = function(callNext) {
@@ -87,6 +86,10 @@ Park.load = function(rawData) {
     return template(this);;
   };
 
+
+  $(document).ready(function() {
+    Park.fetchAll();
+  });
 
   module.Park = Park;
 })(window);
