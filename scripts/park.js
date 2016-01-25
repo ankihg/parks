@@ -28,7 +28,6 @@ Park.fetchAll = function(callNext) {
 };
 
 Park.update = function(callNext) {
-  console.log('update');
  $.getJSON('/data/parkFeatures.json', function(data, message, xhr) {
     Park.load(data.data);
     localStorage.rawData = JSON.stringify(data);
@@ -39,7 +38,6 @@ Park.update = function(callNext) {
 };
 
 Park.checkUpdate = function(callNext) {
-  console.log('check update');
   $.ajax({
   type: 'HEAD',
   url: "/data/parkFeatures.json",
@@ -73,11 +71,6 @@ Park.load = function(rawData) {
     }
   });
 
-
-  // Park.all.forEach(function(p) {
-  //   p.makeForIndex();
-  // });
-
   var n = Math.min(10, Park.all.length);
   for (var i=0; i<n; i++ ) {
     Park.all[i].makeForIndex();
@@ -85,7 +78,7 @@ Park.load = function(rawData) {
 };
 
   Park.prototype.makeForIndex = function() {
-    $('#parks').append(this.toParkIndexHTML());
+    $('#park-info').append(this.toParkIndexHTML());
     this.initStreetView();
   }
 
