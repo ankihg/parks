@@ -1,0 +1,14 @@
+.park-index {
+  margin: 1%;
+}
+
+.map {
+  display:none;
+  float: left;
+}
+
+.pano {
+  float: left;
+  height: 200px;
+  width: 400px;
+}
