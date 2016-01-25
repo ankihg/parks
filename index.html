@@ -11,15 +11,15 @@
     <link rel="stylesheet" href="styles/base.css">
     <script src="http://maps.googleapis.com/maps/api/js"></script>
     <script>
-      function initialize() {
-      var mapProp = {
-      center:new google.maps.LatLng(51.508742,-0.120850),
-      zoom:5,
-      mapTypeId:google.maps.MapTypeId.ROADMAP
-      };
-      var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
-      }
-      google.maps.event.addDomListener(window, 'load', initialize);
+      // function initialize() {
+      // var mapProp = {
+      // center:new google.maps.LatLng(51.508742,-0.120850),
+      // zoom:5,
+      // mapTypeId:google.maps.MapTypeId.ROADMAP
+      // };
+      // var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+      // }
+      // google.maps.event.addDomListener(window, 'load', initialize);
     </script>
 
     <script id='park-index-template'  type='text/x-handlebars-template'>
@@ -99,8 +99,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.4/handlebars.js"></script>
     <script src="https://cdn.firebase.com/js/client/2.4.0/firebase.js"></script>
 
-    <script src="/scripts/park.js"></script>
-    <script src="/scripts/comment.js"></script>
+    <script src="scripts/park.js"></script>
+    <script src="scripts/markerView.js"></script>
+    <script src="scripts/comment.js"></script>
     <script>
       Park.fetchAll();
     </script>
