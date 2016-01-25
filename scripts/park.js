@@ -81,6 +81,7 @@ Park.load = function(rawData) {
 };
 
 Park.display = function() {
+  $('#park-info').empty();
   Park.toDisplay.map(function(p) {
     p.makeForIndex();
   });
@@ -121,7 +122,8 @@ Park.display = function() {
     .reduce(function(uniqueFeatures, parkFeatures) {
       parkFeatures.filter(function(feature) {
         return uniqueFeatures.indexOf(feature) < 0;
-      }).forEach(function (feature) {
+      })
+      .forEach(function (feature) {
         uniqueFeatures.push(feature);
       });
       return uniqueFeatures;
@@ -129,7 +131,9 @@ Park.display = function() {
   };
 
   Park.allWithFeature = function(feature) {
-
+    return Park.all.filter(function(p) {
+      return p.features.indexOf(feature) >= 1;
+    });
   }
 
   module.Park = Park;
