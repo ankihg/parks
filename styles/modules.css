@@ -1,0 +1,11 @@
+.main-nav li{
+  list-style: none;
+  display: inline;
+  padding: .2em .2em .2em;
+}
+
+.main-nav ul li: hover{
+   color: #ffff00;
+}
+
+
