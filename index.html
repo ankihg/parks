@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="styles/normalize.css">
     <link rel="stylesheet" href="styles/modules.css">
     <link rel="stylesheet" href="styles/skeleton.css">
+    <link rel="stylesheet" href="styles/base.css">
     <script src="http://maps.googleapis.com/maps/api/js"></script>
     <script>
       function initialize() {
@@ -61,9 +62,9 @@
             </ul>
             <form class="" action="index.html" method="post">
               <label>
-                <input type="text" placeholder="Add Comment">
+                <input type="text" id="comment-input" placeholder="Add Comment">
               </label>
-              <button type="submit" name="button">Add Comment</button>
+              <button type="submit" id="comment-button" name="button">Add Comment</button>
             </form>
           </section>
       </main>
@@ -78,7 +79,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.4/handlebars.js"></script>
 
     <script src="/scripts/park.js"></script>
-
+    <script src="/scripts/comment.js"></script>
     <script>
       Park.fetchAll();
     </script>
