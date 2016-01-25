@@ -103,8 +103,22 @@ Park.load = function(rawData) {
           }
         });
     map.setStreetView(panorama);
+  };
 
-  }
+  Park.allFeatures = function() {
+    return Park.all.map(function(p) {
+      return p.features;
+    })
+    .reduce(function(uniqueFeatures, parkFeatures) {
+      parkFeatures.filter(function(feature) {
+        return uniqueFeatures.indexOf(feature) < 0;
+      }).forEach(function (feature) {
+        uniqueFeatures.push(feature);
+      });
+      return uniqueFeatures;
+    }, []);
+
+  };
 
   module.Park = Park;
 })(window);
