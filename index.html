@@ -1,1 +1,67 @@
-hello, world
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles/normalize.css">
+    <link rel="stylesheet" href="styles/modules.css">
+    <link rel="stylesheet" href="styles/skeleton.css">
+    <script src="http://maps.googleapis.com/maps/api/js"></script>
+    <script>
+      function initialize() {
+      var mapProp = {
+      center:new google.maps.LatLng(51.508742,-0.120850),
+      zoom:5,
+      mapTypeId:google.maps.MapTypeId.ROADMAP
+      };
+      var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+ </head>
+
+ <body>
+
+     <header>
+        <nav class="main-nav">
+          <ul>
+            <li class="tab" data-content="home"><a href="/"> Home</a></li>
+            <li class="tab" data-content="parks"><a href="/parks"> Parks</a></li>
+            <li><a href="http://www.seattle.gov/parks/calendar/"> Volunteer</a></li>
+          </ul>
+      </nav>
+
+      </header>
+
+      <main class="container">
+          <div class="row">
+            <section id="map" class="nine columns">
+              <div id="googleMap" style="width:640px;height:420px;"></div>
+            </section>
+            <div class="three columns">
+              <select id="location-filter">
+                  <option value="">-- Filter by Location --</option>
+              </select>
+              <select id="feature-filter">
+                  <option value="">-- Filter by Feature --</option>
+              </select>
+            </div>
+
+            <section id="park info">
+            </section>
+            <section id="park comments">
+            </section>
+          </div>
+      </main>
+
+      <footer>
+        &copy;Parks and Recreation
+      </footer>
+
+    <!-- // <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script> -->
+
+
+  </body>
+</html>
