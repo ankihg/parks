@@ -38,11 +38,6 @@
 
       </div>
     </script>
-
-
-    <script id="comment-template" type="text/x-handlebars-template">
-      <li id="{{parkName}}">{{comment}}</li>
-    </script>
  </head>
 
  <body>
@@ -81,6 +76,9 @@
             <ul id="comment-ul">
             </ul>
             <form class="" action="index.html" method="post">
+              <label>
+                <input type="text" id="parkName-input" placeholder="Specify Park" value="">
+              </label>
               <label>
                 <input type="text" id="comment-input" placeholder="Add Comment">
               </label>
