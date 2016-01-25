@@ -1,16 +1,19 @@
 (function(module) {
 
   var Park = function(elm) {
-    console.log('new park: '+elm);
+    // console.log('new park: '+elm);
 
     this.name = elm[9];
+
+    this.features = [];
+    this.features.push(elm[8]);
+
     this.address = elm[10];
-    this.feature = elm[8];
     this.govURL = elm[11][0];
     this.lng = elm[12];
     this.lat = elm[13];
 
-    console.log(this);
+    // console.log(this);
   };
 
 
@@ -56,8 +59,22 @@ Park.load = function(rawData) {
   Park.all = [];
 
   rawData.map(function(elm) {
-    Park.all.push(new Park(elm));
+    //handle repeat parks for each feature in parkFeatures.json
+    var parkNames = Park.all.map(function(p) {
+      return p.name;
+    });
+
+    var parkIndex = parkNames.indexOf(elm[9]);
+
+    if (parkIndex === -1) { //not in Park.all, make park
+      Park.all.push(new Park(elm));
+    } else { // in Park.all, just push new feature to park.features
+      Park.all[parkIndex].features.push(elm[8]);
+    }
   });
+  console.log(Park.all.map(function(p) {
+    return p.name;
+  }));
 
   // Park.all.forEach(function(p) {
   //   $('#parks').append(p.toHTML());
