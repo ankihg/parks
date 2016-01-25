@@ -1,1 +1,49 @@
-hello, world
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="http://maps.googleapis.com/maps/api/js"></script>
+    <script>
+      function initialize() {
+      var mapProp = {
+      center:new google.maps.LatLng(51.508742,-0.120850),
+      zoom:5,
+      mapTypeId:google.maps.MapTypeId.ROADMAP
+      };
+      var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+ </head>
+
+ <body>
+
+     <header>
+        <nav class="main-nav">
+          <ul>
+            <li>Home</li>
+            <li>Find A Park</li>
+            <li>Volunteer</li>
+          </ul>
+
+      </nav>
+
+      </header>
+
+      <main>
+        <section id="home" class="tab-content">
+          <div id="googleMap" style="width:640px;height:420px;"></div>
+        </section>
+      </main>
+
+      <footer>
+        &copy;Parks and Recreation
+      </footer>
+
+    <!-- // <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script> -->
+
+  </body>
+</html>
