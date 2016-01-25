@@ -77,7 +77,7 @@ Park.load = function(rawData) {
   }));
 
   Park.all.forEach(function(p) {
-    $('#parks').append(p.toParkIndexHTML());
+    $('#park-info').append(p.toParkIndexHTML());
   });
 };
 
