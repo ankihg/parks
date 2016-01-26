@@ -5,6 +5,7 @@
   indexView.index = function() {
     populateFilter();
     handleFilter();
+    makeMarker();
   };
 
   function populateFilter() {
