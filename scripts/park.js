@@ -103,7 +103,7 @@ Park.display = function() {
   featureImgs['Basketball Courts'] = "/media/basketball.png"; featureImgs['Tennis Courts'] = "/media/tennis.png";
   featureImgs['Fishing'] = "/media/fish.png";  featureImgs['Firepits'] = "/media/fire.png";
   featureImgs['Viewpoints'] = "/media/binoculars.png";
-  function asImg(feature) {
+  Park.asImg = function(feature) {
     var img = featureImgs[feature];
     if (img) { return "<img src="+img+">"; }
     else { return "<img src=/media/tree.png>"; }
@@ -113,7 +113,7 @@ Park.display = function() {
     this.featuresDisplay = "";
      for (var i=0; i<this.features.length; i++) {
       var f = this.features[i];
-      this.featuresDisplay += asImg(f);
+      this.featuresDisplay += Park.asImg(f);
     };
   };
 

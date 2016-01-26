@@ -21,6 +21,17 @@
 #feature-checklist {
   overflow-y: scroll;
   height: 45rem;
+  width: 25rem;
+  /*max-width: 100%;*/
   border-style: solid;
   padding: 1%;
+}
+
+label img {
+  width: 15%;
+  height: 15%;
+}
+
+ul {
+  list-style-type: none;
 }
