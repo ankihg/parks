@@ -28,7 +28,7 @@ MapView.makeMarkers = function(){
     var marker = new google.maps.Marker({
       position: new google.maps.LatLng(p.lat, p.lng),
       map: MapView.map,
-      icon: '/media/tree.png'
+      icon: '/media/svg/tree101.svg'
     });
 
     var infowindow = new google.maps.InfoWindow({
