@@ -4,7 +4,7 @@
     // console.log('new park: '+elm);
 
     this.name = elm[9];
-    this.id = this.name.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").replace(/ /g, '-' );
+    this.id = this.name.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").replace(/ /g, '-' ).toLowerCase();
 
     this.features = [];
     this.features.push(elm[8]);
@@ -151,7 +151,7 @@ Park.display = function() {
     var loc = {lat: this.lat, lng: this.lng};
     var map = new google.maps.Map(document.getElementById(this.id+'-page-map'), {
       center: loc,
-      zoom: 16,
+      zoom: 17,
       mapTypeId: google.maps.MapTypeId.SATELLITE
     });
     // var marker = new google.maps.Marker({

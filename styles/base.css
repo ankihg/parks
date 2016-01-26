@@ -50,3 +50,8 @@ ul {
 #park-page h1 {
   text-align: center;
 }
+
+.fontImg img {
+  width: 20%;
+  height: 20%;
+}
