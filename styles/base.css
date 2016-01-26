@@ -17,3 +17,10 @@
   width: 10%;
   height: 10%;
 }
+
+#feature-checklist {
+  overflow-y: scroll;
+  height: 45rem;
+  border-style: solid;
+  padding: 1%;
+}

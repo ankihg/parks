@@ -114,9 +114,7 @@ Park.display = function() {
      for (var i=0; i<this.features.length; i++) {
       var f = this.features[i];
       this.featuresDisplay += asImg(f);
-      console.log(this.featuresDisplay);
     };
-    console.log("new: "+this.featuresDisplay);
   };
 
   Park.prototype.initStreetView = function() {
