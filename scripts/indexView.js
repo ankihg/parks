@@ -3,8 +3,10 @@
   var indexView = {};
 
   indexView.index = function() {
-    populateChecklist();
-    handleChecklist();
+    if ($('#feature-checklist').children().length === 0) {
+      populateChecklist();
+      handleChecklist();
+    }
     MapView.init();
   };
 
