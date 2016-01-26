@@ -155,6 +155,18 @@ Park.display = function() {
     });
   };
 
+  Park.filterForCheckedFeatures = function(list) {
+    var $checkedFeatures = $("#feature-checklist").find(':checked');
+    return list.filter(function(park) {
+      for (var i=0; i < $checkedFeatures.length; i++) {
+        if (park.features.indexOf($checkedFeatures.eq(i).val()) < 0) {
+          return false;
+        }
+      }
+      return true;
+    });
+  }
+
   Park.getNearestN = function(n, map) {
     Park.all.sort(function(a,b) {
       return (a.distFromCenter(map)) - (b.distFromCenter(map));
@@ -166,7 +178,7 @@ Park.display = function() {
     list.sort(function(a,b) {
       return (a.distFromCenter(map)) - (b.distFromCenter(map));
     });
-    return Park.all.slice(0, n);
+    return list.slice(0, n);
   };
 
   Park.prototype.distFromCenter = function(map) {

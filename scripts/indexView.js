@@ -5,7 +5,7 @@
   indexView.index = function() {
     populateChecklist();
     handleChecklist();
-    makeMarkers();
+    MapView.makeMarkers();
   };
 
   function populateChecklist() {
@@ -20,14 +20,10 @@
     $('#feature-checklist').on('change', function() {
 
       var $checkedFeatures = $(this).find(':checked');
-      Park.toDisplay = Park.all.filter(function(park) {
-        for (var i=0; i < $checkedFeatures.length; i++) {
-          if (park.features.indexOf($checkedFeatures.eq(i).val()) < 0) {
-            return false;
-          }
-        }
-        return true;
-      });
+
+      Park.toDisplay = Park.filterForCheckedFeatures(Park.all);
+
+      Park.toDisplay = Park.filterNearestN(Park.toDisplay, 10, MapView.map);
 
       Park.display();
     });
