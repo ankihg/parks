@@ -134,7 +134,24 @@ Park.display = function() {
     return Park.all.filter(function(p) {
       return p.features.indexOf(feature) >= 1;
     });
+  };
+
+  Park.getNearestN = function(n, map) {
+    Park.all.sort(function(a,b) {
+      return (a.distFromCenter(map)) - (b.distFromCenter(map));
+    });
+    return Park.all.slice(0, n);
   }
+
+  Park.prototype.distFromCenter = function(map) {
+    this.distFromMapCenter = Park.findDistance(new google.maps.LatLng(this.lat, this.lng), map.getCenter());
+    return this.distFromMapCenter;
+  }
+
+  Park.findDistance = function(p1, p2) {
+    //http://stackoverflow.com/questions/1502590/calculate-distance-between-two-points-in-google-maps-v3
+    return google.maps.geometry.spherical.computeDistanceBetween(p1, p2);
+  };
 
   module.Park = Park;
 })(window);

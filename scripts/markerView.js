@@ -23,3 +23,10 @@ var locations = [Park.lat,Park.lng];
         }
       })(marker, i));
     }
+
+    google.maps.event.addListener(map,'dragend', function() {
+      console.log('drag end');
+
+      Park.toDisplay = Park.getNearestN(10, map);
+      Park.display();
+    });
