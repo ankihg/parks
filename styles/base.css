@@ -12,3 +12,8 @@
   height: 200px;
   width: 400px;
 }
+
+.features-display img {
+  width: 10%;
+  height: 10%;
+}
