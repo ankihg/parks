@@ -1,16 +1,30 @@
 
 var MapView = {};
 
+MapView.parksToMark = [];
+MapView.markers = [];
+
 MapView.map = new google.maps.Map(document.getElementById('googleMap'), {
         zoom: 10,
         center: new google.maps.LatLng(47.53, -122.30),
         mapTypeId: google.maps.MapTypeId.ROADMAP
       });
 
-MapView.makeMarkers = function(){
-  var infowindow = new google.maps.InfoWindow();
+MapView.init = function() {
+  MapView.parksToMark = Park.all;
+  MapView.makeMarkers();
 
-  Park.all.map(function(p) {
+  google.maps.event.addListener(MapView.map,'dragend', function() {
+    Park.toDisplay = Park.filterForCheckedFeatures(Park.all);
+    Park.toDisplay = Park.filterNearestN(Park.toDisplay, 10, MapView.map);
+    Park.display();
+  });
+}
+
+MapView.makeMarkers = function(){
+  MapView.removeMarkers();
+
+  MapView.parksToMark.map(function(p) {
     var marker = new google.maps.Marker({
       position: new google.maps.LatLng(p.lat, p.lng),
       map: MapView.map,
@@ -25,15 +39,14 @@ MapView.makeMarkers = function(){
        infowindow.open(MapView.map,marker);
       });
 
+      MapView.markers.push(marker);
   });
 
 };
 
-    google.maps.event.addListener(MapView.map,'dragend', function() {
-      console.log('drag end');
-
-      Park.toDisplay = Park.filterForCheckedFeatures(Park.all);
-      Park.toDisplay = Park.filterNearestN(Park.toDisplay, 10, MapView.map);
-
-      Park.display();
-    });
+MapView.removeMarkers = function() {
+  MapView.markers.map(function(m) {
+    m.setMap(null);
+  });
+  MapView.markers = [];
+}
