@@ -21,7 +21,12 @@
       // }
       // google.maps.event.addDomListener(window, 'load', initialize);
     </script>
-
+    <script id='comment-template'  type='text/x-handlebars-template'>
+      <div class = "comments-wrapper">
+        <h5>{{name}}</h5>
+        <p>{{text}}</p>
+      </div>
+    </script>
     <script id='park-index-template'  type='text/x-handlebars-template'>
       <div class='row park-index'>
         <div id='street-view' class='one-half column'>
@@ -73,17 +78,19 @@
           </section>
           <section id="park-comments">
             <h5>Comments:</h5>
-            <ul id="comment-ul">
-            </ul>
+            <section id="comment-list"></section>
             <form class="" action="index.html" method="post">
               <label>
-                <input type="text" id="parkName-input" placeholder="Specify Park" value="">
+                <input type="text" id="parkName-input" placeholder="Name" value="">
               </label>
               <label>
                 <input type="text" id="comment-input" placeholder="Add Comment">
               </label>
               <button type="submit" id="comment-button" name="button">Add Comment</button>
             </form>
+          </section>
+          <section id="events">
+            <iframe src="https://calendar.google.com/calendar/embed?mode=AGENDA&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=elstad.nienow%40gmail.com&amp;color=%2329527A&amp;ctz=America%2FLos_Angeles" style="border-width:0" width="900" height="600" frameborder="0" scrolling="no"></iframe>
           </section>
       </main>
 
@@ -99,7 +106,6 @@
 
     <script src="/scripts/park.js"></script>
     <script src="/scripts/indexView.js"></script>
-    <script src="/scripts/comment.js"></script>
 
     <script src="scripts/park.js"></script>
     <script src="scripts/markerView.js"></script>

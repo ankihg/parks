@@ -3,25 +3,30 @@
 var comment = {};
 var dataRef = new Firebase('https://scorching-inferno-738.firebaseio.com/');
 
+
 comment.handleButton = function(){
-  $('#comment-button').on('click',function(evt){
+  $('#comment-button').on('click', function(evt){
     evt.preventDefault();
     var commentBody = $('#comment-input').val();
     var park = $('#parkName-input').val();
     dataRef.push({name: park, text: commentBody});
+    console.log(commentBody ,park);
+    $('#comment-input').val('');
+    $('#parkName-input').val('');
   });
-  $('#comment-input').val('');
-  $('#parkName-input').val('');
 };
 
 comment.loadAll = function(){
-  dataRef.on('child_added', function(data) {
-    var newComment = data.val();
-    comment.displayComment(newComment.name, newComment.text);
+  dataRef.on('child_added', function(snapshot) {
+    var newComment = snapshot.val();
+    console.log(newComment);
+    comment.displayComment(newComment);
+    console.log(newComment.name, newComment.text);
   });
 }
-comment.displayComment = function(name,text){
-  $('#comment-ul').append('<li id="'+name+'">'+text+'</li>');
+comment.displayComment = function(comment){
+  var template = Handlebars.compile($('#comment-template').text());
+  $('#comment-list').append(template(comment));
 };
 
 comment.handleButton();
