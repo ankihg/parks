@@ -103,7 +103,7 @@ Park.display = function() {
   featureImgs['Basketball Courts'] = "/media/basketball.png"; featureImgs['Tennis Courts'] = "/media/tennis.png";
   featureImgs['Fishing'] = "/media/fish.png";  featureImgs['Firepits'] = "/media/fire.png";
   featureImgs['Viewpoints'] = "/media/binoculars.png";
-  function asImg(feature) {
+  Park.asImg = function(feature) {
     var img = featureImgs[feature];
     if (img) { return "<img src="+img+">"; }
     else { return "<img src=/media/tree.png>"; }
@@ -113,10 +113,8 @@ Park.display = function() {
     this.featuresDisplay = "";
      for (var i=0; i<this.features.length; i++) {
       var f = this.features[i];
-      this.featuresDisplay += asImg(f);
-      console.log(this.featuresDisplay);
+      this.featuresDisplay += Park.asImg(f);
     };
-    console.log("new: "+this.featuresDisplay);
   };
 
   Park.prototype.initStreetView = function() {
@@ -162,7 +160,14 @@ Park.display = function() {
       return (a.distFromCenter(map)) - (b.distFromCenter(map));
     });
     return Park.all.slice(0, n);
-  }
+  };
+
+  Park.filterNearestN = function(list, n, map) {
+    list.sort(function(a,b) {
+      return (a.distFromCenter(map)) - (b.distFromCenter(map));
+    });
+    return Park.all.slice(0, n);
+  };
 
   Park.prototype.distFromCenter = function(map) {
     this.distFromMapCenter = Park.findDistance(new google.maps.LatLng(this.lat, this.lng), map.getCenter());
