@@ -96,8 +96,20 @@ Park.display = function() {
   Park.prototype.toParkIndexHTML = function() {
     var template = Handlebars.compile($('#park-index-template').text());
     this.makeFeaturesDisplay();
-    return template(this);;
+    return template(this);
   };
+
+  Park.prototype.makeForPage = function() {
+    var $parkPage = $('#park-page');
+    $parkPage.empty();
+    $parkPage.append(this.toParkPageHTML());
+  }
+
+  Park.prototype.toParkPageHTML = function() {
+    var template = Handlebars.compile($('#park-page-template').text());
+    this.makeFeaturesDisplay();
+    return template(this);
+  }
 
   var featureImgs = new Object();
   featureImgs['Basketball Courts'] = "/media/basketball.png"; featureImgs['Tennis Courts'] = "/media/tennis.png";
@@ -191,6 +203,14 @@ Park.display = function() {
     return google.maps.geometry.spherical.computeDistanceBetween(p1, p2);
   };
 
+  Park.getById = function(id) {
+    for (var i=0; i<Park.all.length; i++) {
+      var p = Park.all[i];
+      if (p.id === id) {
+        return p;
+      }
+    }
+  };
 
   module.Park = Park;
 })(window);

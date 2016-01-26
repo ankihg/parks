@@ -1,6 +1,6 @@
 (function(module){
   parkController = {};
-  Park.fetchAll(indexView.index);
+  // Park.fetchAll();
 
   parkController.index = function(){
     $('.park-index').show();
@@ -17,6 +17,23 @@
     $('.park-index').not('#'+parkName).hide();
     $('#park-comments').show();
   };
+
+  parkController.loadParkPage = function(ctx) {
+    ui();
+    if (Park.all.length === 0) { Park.fetchAll(); }
+    var park = Park.getById(ctx.params.id);
+    park.makeForPage();
+  };
+
+  function ui() {
+    $('#googleMap').hide();
+    $('#feature-checklist').hide();
+    $('#park-info').hide();
+
+    $('#park-page').show();
+    $('#park-comments').show();
+
+  }
 
   module.parkController = parkController;
 })(window);

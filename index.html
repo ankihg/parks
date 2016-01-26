@@ -34,14 +34,19 @@
         </div>
 
         <div class='one-half column'>
-          <a href="/park/" + {{id}}><h1>{{name}}</h1></a>
+          <a href="/parks/{{id}}"><h2>{{name}}</h2></a>
           <div class='features-display'>{{{featuresDisplay}}}</div>
           <h4>{{address}}</h4>
-          <a href="/parks/{{id}}">More Information</a>
+          <!-- <a href="/parks/{{id}}">More Information</a> -->
         </div>
 
       </div>
     </script>
+
+    <script id='park-page-template'  type='text/x-handlebars-template'>
+      <h4>Welcome to {{name}}</h4>
+    </script>
+
   </head>
 
   <body class="container">
@@ -72,8 +77,8 @@
           <ul id='feature-checklist'></ul>
         </div>
     </div>
-      <section id="park-info">
-      </section>
+      <section id="park-info"></section>
+      <section id="park-page"></section>
       <section id="park-comments">
         <h5>Comments:</h5>
         <section id="comment-list"></section>
@@ -103,6 +108,7 @@
 
     <script src="/scripts/park.js"></script>
     <script src="/scripts/indexView.js"></script>
+    <script src="scripts/indexController.js"></script>
 
     <script src="scripts/park.js"></script>
     <script src="scripts/markerView.js"></script>
