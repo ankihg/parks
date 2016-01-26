@@ -160,7 +160,14 @@ Park.display = function() {
       return (a.distFromCenter(map)) - (b.distFromCenter(map));
     });
     return Park.all.slice(0, n);
-  }
+  };
+
+  Park.filterNearestN = function(list, n, map) {
+    list.sort(function(a,b) {
+      return (a.distFromCenter(map)) - (b.distFromCenter(map));
+    });
+    return Park.all.slice(0, n);
+  };
 
   Park.prototype.distFromCenter = function(map) {
     this.distFromMapCenter = Park.findDistance(new google.maps.LatLng(this.lat, this.lng), map.getCenter());
