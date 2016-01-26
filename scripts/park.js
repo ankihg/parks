@@ -112,13 +112,29 @@ Park.display = function() {
   }
 
   var featureImgs = new Object();
-  featureImgs['Basketball Courts'] = "/media/basketball.png"; featureImgs['Tennis Courts'] = "/media/tennis.png";
-  featureImgs['Fishing'] = "/media/fish.png";  featureImgs['Firepits'] = "/media/fire.png";
-  featureImgs['Viewpoints'] = "/media/binoculars.png";
+  featureImgs['Basketball Courts'] = "/media/svg/ball23.svg";
+  featureImgs['Tennis Courts'] = "/media/svg/tennis3.svg";
+  featureImgs['Fishing'] = "/media/svg/fish2.svg";
+  featureImgs['Firepits'] = "/media/svg/bonfire.svg";
+  featureImgs['Viewpoints'] = "/media/svg/binoculars11.svg";
+  featureImgs['Childrens Play Areas'] = "/media/svg/swing1.svg";
+  featureImgs['Playfields'] = "/media/svg/soccer82.svg";
+  featureImgs['Wading Pools'] = "/media/svg/summer37.svg";
+  featureImgs['Ceremonies'] = "/media/svg/calendar70.svg";
+  featureImgs['Picnic Sites'] = "/media/svg/picnic.svg";
+  featureImgs['Waterfront'] = "/media/svg/beach57.svg";
+  featureImgs['Beaches'] = "/media/svg/rest5.svg";
+  featureImgs['Environmental Learning  Centers'] = "/media/svg/seeds2.svg";
+  featureImgs['Boat Launches'] = "/media/svg/training.svg";
+  featureImgs['Off Leash Areas'] = "/media/svg/running28.svg";
+  featureImgs['Community Centers'] = "/media/svg/group49.svg";
+  featureImgs['Computer/Media Center'] = "/media/svg/pc6.svg";
+  featureImgs['Gardens'] = "/media/svg/bloom1.svg";
+  featureImgs['Pools'] = "/media/svg/swimming21.svg";
   Park.asImg = function(feature) {
     var img = featureImgs[feature];
     if (img) { return "<img src="+img+">"; }
-    else { return "<img src=/media/tree.png>"; }
+    else { return "<img src=/media/svg/tree101.svg>"; }
   }
 
   Park.prototype.makeFeaturesDisplay = function() {
