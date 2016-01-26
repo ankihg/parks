@@ -4,6 +4,7 @@
 
   indexView.index = function() {
     populateFilter();
+    makeMarkers();
     handleFilter();
   };
 
@@ -20,7 +21,6 @@
         Park.display();
     });
   };
-
 
   module.indexView = indexView;
 })(window);
