@@ -11,6 +11,12 @@
   max-width: 100%;
 }
 
+.page-map {
+  height: 30rem;
+  width: 100%;
+  max-width: 100%;
+}
+
 .features-display img {
   width: 10%;
   height: 10%;
@@ -36,4 +42,11 @@ ul {
 
 .park-index {
   margin-bottom: 1%;
+}
+
+#park-page {
+
+}
+#park-page h1 {
+  text-align: center;
 }

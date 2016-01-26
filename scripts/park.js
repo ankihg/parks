@@ -103,6 +103,7 @@ Park.display = function() {
     var $parkPage = $('#park-page');
     $parkPage.empty();
     $parkPage.append(this.toParkPageHTML());
+    this.initPageMap();
   }
 
   Park.prototype.toParkPageHTML = function() {
@@ -144,6 +145,20 @@ Park.display = function() {
           }
         });
     map.setStreetView(panorama);
+  };
+
+  Park.prototype.initPageMap = function() {
+    var loc = {lat: this.lat, lng: this.lng};
+    var map = new google.maps.Map(document.getElementById(this.id+'-page-map'), {
+      center: loc,
+      zoom: 16,
+      mapTypeId: google.maps.MapTypeId.SATELLITE
+    });
+    // var marker = new google.maps.Marker({
+    //   position: new google.maps.LatLng(this.lat, this.lng),
+    //   map: map,
+    //   icon: '/media/tree.png'
+    // });
   };
 
   Park.allFeatures = function() {

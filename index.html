@@ -44,7 +44,18 @@
     </script>
 
     <script id='park-page-template'  type='text/x-handlebars-template'>
-      <h4>Welcome to {{name}}</h4>
+      <div id='park-page'>
+      <h1>Welcome to {{name}}</h1>
+
+      <div id="{{id}}" class='row park-index'>
+        <div id='street-view' class='two-thirds column'>
+          <div id="{{this.id}}-page-map" class='page-map'></div>
+        </div>
+
+      </div>
+
+
+      </div>
     </script>
 
   </head>
