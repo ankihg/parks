@@ -5,7 +5,7 @@
   indexView.index = function() {
     populateChecklist();
     handleChecklist();
-    MapView.makeMarkers();
+    MapView.init();
   };
 
   function populateChecklist() {
@@ -22,6 +22,9 @@
       var $checkedFeatures = $(this).find(':checked');
 
       Park.toDisplay = Park.filterForCheckedFeatures(Park.all);
+
+      MapView.parksToMark = Park.toDisplay;
+      MapView.makeMarkers();
 
       Park.toDisplay = Park.filterNearestN(Park.toDisplay, 10, MapView.map);
 
