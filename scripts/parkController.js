@@ -3,6 +3,8 @@
   Park.fetchAll(indexView.index);
 
   parkController.index = function(){
+    $('.park-index').show();
+    $('#googleMap').show();
     $('#park-comments').hide();
     $('#events').hide();
   };
@@ -15,5 +17,11 @@
     $('.park-index').not('#'+parkName).hide();
     $('#park-comments').show();
   };
+
+  module.parkController = parkController;
+})(window);
+
+
+(function(module){
 
 })(window);
