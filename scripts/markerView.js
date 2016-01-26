@@ -18,8 +18,7 @@ MapView.makeMarkers = function(){
     });
 
     var infowindow = new google.maps.InfoWindow({
-       content: 'Name: ' + p.name +
-       '<br>Address: ' + p.address
+       content: 'Name:' + '<a href="/parks/' + p.id + '">' + p.name + '</a><br/>' + 'Address: ' + p.address
      });
 
      google.maps.event.addListener(marker,'click',function() {
