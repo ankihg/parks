@@ -27,16 +27,17 @@
       </div>
     </script>
     <script id='park-index-template'  type='text/x-handlebars-template'>
-      <div class='row park-index'>
+      <div id="{{id}}" class='row park-index'>
         <div id='street-view' class='one-half column'>
           <div id="{{this.id}}-map" class='map'></div>
           <div id="{{this.id}}-pano" class='pano'></div>
         </div>
 
         <div class='one-half column'>
-          <h1>{{name}}</h1>
+          <a href="/park/" + {{id}}><h1>{{name}}</h1></a>
           <div class='features-display'>{{{featuresDisplay}}}</div>
           <h4>{{address}}</h4>
+          <a href="/parks/{{id}}">More Information</a>
         </div>
 
       </div>
@@ -57,18 +58,20 @@
     </header>
 
     <main class="row">
-      <section class="nine columns">
-        <div id="googleMap"></div>
-      </section>
-      <div class="three columns">
-        <!-- <select id="location-filter">
-            <option value="">-- Filter by Location --</option>
-        </select> -->
-        <!-- <select id="feature-filter">
-            <option value="">-- Filter by Feature --</option>
-        </select> -->
-        <ul id='feature-checklist'></ul>
-      </div>
+      <div id="map-wrapper">
+        <section class="nine columns">
+          <div id="googleMap"></div>
+        </section>
+        <div class="three columns">
+          <!-- <select id="location-filter">
+              <option value="">-- Filter by Location --</option>
+          </select> -->
+          <!-- <select id="feature-filter">
+              <option value="">-- Filter by Feature --</option>
+          </select> -->
+          <ul id='feature-checklist'></ul>
+        </div>
+    </div>
       <section id="park-info">
       </section>
       <section id="park-comments">
@@ -96,6 +99,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.4/handlebars.js"></script>
     <script src="https://cdn.firebase.com/js/client/2.4.0/firebase.js"></script>
+    <script src="vendors/page.js"></script>
 
     <script src="/scripts/park.js"></script>
     <script src="/scripts/indexView.js"></script>
@@ -103,9 +107,11 @@
     <script src="scripts/park.js"></script>
     <script src="scripts/markerView.js"></script>
     <script src="scripts/comment.js"></script>
+    <script src="scripts/parkController.js"></script>
+    <script src="scripts/routes.js"></script>
 
     <script>
-      Park.fetchAll(indexView.index);
+      // Park.fetchAll(indexView.index);
     </script>
 
   </body>
