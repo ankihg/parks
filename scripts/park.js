@@ -101,7 +101,7 @@ Park.display = function() {
 
   var featureImgs = new Object();
   featureImgs['Basketball Courts'] = "/media/basketball.png"; featureImgs['Tennis Courts'] = "/media/tennis.png";
-
+  featureImgs['Fishing'] = "/media/fish.png";  featureImgs['Firepits'] = "/media/fire.png";
   function asImg(feature) {
     var img = featureImgs[feature];
     if (img) { return "<img src="+img+">"; }
