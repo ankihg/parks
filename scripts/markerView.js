@@ -10,11 +10,21 @@ var makeMarkers = function(){
 var infowindow = new google.maps.InfoWindow();
 
 Park.all.map(function(p) {
-  marker = new google.maps.Marker({
+  var marker = new google.maps.Marker({
     position: new google.maps.LatLng(p.lat, p.lng),
     map: map,
     icon: '/media/tree.png'
   });
+
+  var infowindow = new google.maps.InfoWindow({
+     content: 'Name: ' + p.name +
+     '<br>Address: ' + p.address
+   });
+
+   google.maps.event.addListener(marker,'click',function() {
+     infowindow.open(map,marker);
+    });
+
   console.log(marker)
 });
 
