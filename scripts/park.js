@@ -95,7 +95,28 @@ Park.display = function() {
 
   Park.prototype.toParkIndexHTML = function() {
     var template = Handlebars.compile($('#park-index-template').text());
+    this.makeFeaturesDisplay();
     return template(this);;
+  };
+
+  var featureImgs = new Object();
+  featureImgs['Basketball Courts'] = "/media/basketball.png"; featureImgs['Tennis Courts'] = "/media/tennis.png";
+  featureImgs['Fishing'] = "/media/fish.png";  featureImgs['Firepits'] = "/media/fire.png";
+  featureImgs['Viewpoints'] = "/media/binoculars.png";
+  function asImg(feature) {
+    var img = featureImgs[feature];
+    if (img) { return "<img src="+img+">"; }
+    else { return "<img src=/media/tree.png>"; }
+  }
+
+  Park.prototype.makeFeaturesDisplay = function() {
+    this.featuresDisplay = "";
+     for (var i=0; i<this.features.length; i++) {
+      var f = this.features[i];
+      this.featuresDisplay += asImg(f);
+      console.log(this.featuresDisplay);
+    };
+    console.log("new: "+this.featuresDisplay);
   };
 
   Park.prototype.initStreetView = function() {
@@ -152,6 +173,7 @@ Park.display = function() {
     //http://stackoverflow.com/questions/1502590/calculate-distance-between-two-points-in-google-maps-v3
     return google.maps.geometry.spherical.computeDistanceBetween(p1, p2);
   };
+
 
   module.Park = Park;
 })(window);
