@@ -104,6 +104,7 @@ Park.display = function() {
     $parkPage.empty();
     $parkPage.append(this.toParkPageHTML());
     this.initPageMap();
+    this.initPageStreetView();
   }
 
   Park.prototype.toParkPageHTML = function() {
@@ -159,6 +160,23 @@ Park.display = function() {
     //   map: map,
     //   icon: '/media/tree.png'
     // });
+  };
+
+  Park.prototype.initPageStreetView = function() {
+    var loc = {lat: this.lat, lng: this.lng};
+    var map = new google.maps.Map(document.getElementById(this.id+'-help-map'), {
+      center: loc,
+      zoom: 14
+    });
+    var panorama = new google.maps.StreetViewPanorama(
+        document.getElementById(this.id+'-page-street-view'), {
+          position: loc,
+          pov: {
+            heading: 34,
+            pitch: 10
+          }
+        });
+    map.setStreetView(panorama);
   };
 
   Park.allFeatures = function() {
