@@ -5,6 +5,7 @@
   indexView.index = function() {
     populateFilter();
     makeMarkers();
+    handleFilter();
   };
 
   function populateFilter() {
@@ -16,7 +17,8 @@
 
   function handleFilter() {
     $('#feature-filter').on('change', function() {
-
+        Park.toDisplay = Park.allWithFeature($(this).val());
+        Park.display();
     });
   };
 
