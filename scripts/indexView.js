@@ -4,6 +4,7 @@
 
   indexView.index = function() {
     populateFilter();
+    makeMarkers();
   };
 
   function populateFilter() {
@@ -18,7 +19,6 @@
 
     });
   };
-
 
   module.indexView = indexView;
 })(window);
