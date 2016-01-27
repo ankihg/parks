@@ -1,0 +1,20 @@
+.row {
+  margin-bottom: 30px;
+}
+
+.main-nav li{
+  list-style: none;
+  display: inline;
+}
+
+footer {
+  text-align: center;
+}
+
+@media only screen
+and (min-width: 375px)
+and (max-width: 667px){
+  .row{
+    width:100%;
+  }
+}

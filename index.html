@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="styles/modules.css">
     <link rel="stylesheet" href="styles/skeleton.css">
     <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/layout.css">
     <script src="http://maps.googleapis.com/maps/api/js"></script>
     <script>
       // function initialize() {
@@ -28,12 +29,12 @@
     </script>
     <script id='park-index-template'  type='text/x-handlebars-template'>
       <div id="{{id}}" class='row park-index'>
-        <div id='street-view' class='one-half column'>
+        <div id='street-view' class='five columns'>
           <div id="{{id}}-map" class='map'></div>
           <div id="{{id}}-pano" class='pano'></div>
         </div>
 
-        <div class='one-half column'>
+        <div class='seven columns'>
           <a href="/parks/{{id}}"><h2>{{name}}</h2></a>
           <div class='features-display'>{{{featuresDisplay}}}</div>
           <h4>{{address}}</h4>
@@ -43,30 +44,28 @@
     </script>
 
     <script id='park-page-template'  type='text/x-handlebars-template'>
-      <div id='park-page'>
-      <h1>Welcome to {{name}}</h1>
+        <div id='park-page'>
+          <h1>Welcome to {{name}}</h1>
 
-      <div id="{{id}}" class='row'>
-        <div id='page-map' class='two-thirds column'>
-          <div id="{{id}}-page-map" class='page-map'></div>
-        </div>
+          <div id="{{id}}" class='row'>
+            <div id='page-map' class='two-thirds column'>
+              <div id="{{id}}-page-map" class='page-map'></div>
+            </div>
 
-        <div class='one-third column'>
-          <div class='fontImg'>{{{featuresDisplay}}}</div>
-          <h5>{{address}}</h5>
-          <h6>({{lat}}, {{lng}})</h6>
-          <div><a href={{govURL}} target="_blank">seattle.gov/{{id}}</a></div>
-        </div>
-      </div>
+            <div class='one-third column'>
+              <div class='fontImg'>{{{featuresDisplay}}}</div>
+              <h5>{{address}}</h5>
+              <h6>({{lat}}, {{lng}})</h6>
+              <div><a href={{govURL}} target="_blank">seattle.gov/{{id}}</a></div>
+            </div>
+          </div>
 
-
-      <div class='row'>
-        <div id='page-street-view'>
-          <div id="{{id}}-help-map"></div>
-          <div id="{{id}}-page-street-view" class='page-pano'></div>
-        </div>
-      </div>
-
+          <div class='row'>
+            <div id='page-street-view'>
+              <div id="{{id}}-help-map"></div>
+              <div id="{{id}}-page-street-view" class='page-pano'></div>
+            </div>
+          </div>
 
       </div>
     </script>
@@ -74,24 +73,26 @@
   </head>
 
   <body class="container">
-    <div id="weather"></div>
     <header class="row">
       <nav class="main-nav">
         <ul>
-          <li class="three columns" data-content="home"><a href="/"><h5>Home<h5></a></li>
-          <li class="three columns" data-content="parks"><a href="/parks"><h5>Parks<h5></a></li>
-          <li class="three columns"><a href="http://www.seattle.gov/parks/calendar/"><h5>Volunteer<h5></a></li>
+          <li class="three columns" data-content="Seattle Park Finder"><a href="/"><h5>Seattle Park Finder</h5></a></li>
+          <li class="two columns" data-content="parks"><a href="/parks"><h5>Parks</h5></a></li>
+          <li class="two columns"><a href="http://www.seattle.gov/parks/calendar/"><h5>Volunteer</h5></a></li>
+          <li class="two columns"><a href="/about-us"><h5>About Us</h5></a>
         </ul>
+        <div class="three columns"id="weather"></div>
       </nav>
       <!-- <a href="/index.html"><img src="" alt="logo" /></a> -->
     </header>
 
-    <main class="row">
-      <div id="map-wrapper">
-        <section class="nine columns">
+    <main>
+
+      <div class="row" id="map-wrapper">
+        <section class="eight columns">
           <div id="googleMap"></div>
         </section>
-        <div class="three columns">
+        <div class="four columns">
           <!-- <select id="location-filter">
               <option value="">-- Filter by Location --</option>
           </select> -->
@@ -100,10 +101,11 @@
           </select> -->
           <ul id='feature-checklist'></ul>
         </div>
-    </div>
-      <section id="park-info"></section>
-      <section id="park-page"></section>
-      <section id="park-comments">
+      </div>
+
+      <section class="row" id="park-info"></section>
+      <section class="row" id="park-page"></section>
+      <section class="row" id="park-comments">
         <h5>Comments:</h5>
         <section id="comment-list"></section>
         <form class="" action="index.html" method="post">
@@ -116,13 +118,15 @@
           <button type="submit" id="comment-button" name="button">Add Comment</button>
         </form>
       </section>
-      <section id="events">
+
+      <section class="row" id="events">
         <iframe src="https://calendar.google.com/calendar/embed?mode=AGENDA&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=elstad.nienow%40gmail.com&amp;color=%2329527A&amp;ctz=America%2FLos_Angeles" style="border-width:0" width="900" height="600" frameborder="0" scrolling="no"></iframe>
       </section>
+
     </main>
 
     <footer class="row">
-      &copy;Parks and Recreation
+      &copy; Parks and Recreation
     </footer>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -141,10 +145,6 @@
     <script src="scripts/parkController.js"></script>
     <script src="scripts/routes.js"></script>
     <script src="scripts/weather.js"></script>
-
-    <script>
-      // Park.fetchAll(indexView.index);
-    </script>
 
   </body>
 </html>
