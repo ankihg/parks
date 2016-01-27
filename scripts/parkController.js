@@ -1,12 +1,12 @@
 (function(module){
   parkController = {};
 
-  parkController.loadParkPage = function(ctx) {
+  parkController.loadParkPage = function(ctx, next) {
     ui();
     var park = Park.getById(ctx.params.id);
     console.log('park: '+park.name);
     park.makeForPage();
-
+    next();
   };
 
   parkController.ensureParkAll = function(ctx, next) {
