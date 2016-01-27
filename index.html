@@ -70,6 +70,14 @@
       </div>
     </script>
 
+    <script id='park-infowindow-template'  type='text/x-handlebars-template'>
+      <span id='infowindow'>
+        <h6><a href="/parks/{{id}}"><strong>{{name}}</strong></a></h6>
+        <div class="fontImg">{{{featuresDisplay}}}</div>
+        <div>{{address}} ({{lat}}, {{lng}})</div>
+      </span>
+    </script>
+
   </head>
 
   <body class="container">
