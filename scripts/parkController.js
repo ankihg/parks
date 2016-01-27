@@ -7,6 +7,16 @@
     $('#googleMap').show();
     $('#park-comments').hide();
     $('#events').hide();
+    $('#about-us').hide();
+  };
+
+  parkController.about = function(){
+    $('.park-index').hide();
+    $('#googleMap').hide();
+    $('#park-comments').hide();
+    $('#events').hide();
+    $('#feature-checklist').hide();
+    $('#about-us').show();
   };
 
   parkController.byParkName = function(ctx){
@@ -15,6 +25,7 @@
     $('#googleMap').hide();
     $('#feature-checklist').hide();
     $('.park-index').not('#'+parkName).hide();
+    $('#about-us').hide();
     $('#park-comments').show();
   };
 
@@ -50,6 +61,7 @@
     $('#feature-checklist').hide();
     $('#park-info').hide();
     $('#events').hide();
+    $('#about-us').hide();
 
     $('#park-page').show();
     $('#park-comments').show();
