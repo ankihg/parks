@@ -171,11 +171,10 @@ Park.display = function() {
       zoom: 17,
       mapTypeId: google.maps.MapTypeId.SATELLITE
     });
-    // var marker = new google.maps.Marker({
-    //   position: new google.maps.LatLng(this.lat, this.lng),
-    //   map: map,
-    //   icon: '/media/tree.png'
-    // });
+    var marker = new google.maps.Marker({
+      position: new google.maps.LatLng(this.lat, this.lng),
+      map: map,
+    });
   };
 
   Park.prototype.initPageStreetView = function() {
