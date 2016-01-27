@@ -5,7 +5,7 @@ $(document).ready(function() {
     woeid: '',
     unit: 'f',
     success: function(weather) {
-      html = '<p>'+weather.temp+'&deg;'+weather.units.temp+' Humidity: '+weather.humidity+'%'+' Sunset: '+weather.sunset+'</p>';
+      html = '<p>'+weather.forecast[0].date+'<br>Temp: '+weather.temp+'&deg;'+weather.units.temp+' Humidity: '+weather.humidity+'%'+'Sunset: '+weather.sunset+'</p>';
       console.log("workinghere");
 
       $("#weather").html(html);
