@@ -10,6 +10,20 @@ MapView.map = new google.maps.Map(document.getElementById('googleMap'), {
         mapTypeId: google.maps.MapTypeId.ROADMAP
       });
 
+var posInfoWindow = new google.maps.InfoWindow({map: MapView.map});
+
+if (navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(function(position) {
+  var pos = {
+    lat: position.coords.latitude,
+    lng: position.coords.longitude
+  };
+      posInfoWindow.setPosition(pos);
+      posInfoWindow.setContent('You are here!');
+      MapView.map.setCenter(pos);
+  });
+}
+
 MapView.init = function() {
   if (!MapView.parksToMark) {
     MapView.parksToMark = Park.all;
