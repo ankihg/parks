@@ -1,6 +1,5 @@
 (function(module){
   parkController = {};
-  // Park.fetchAll();
 
   parkController.index = function(){
     $('.park-index').show();
@@ -29,7 +28,7 @@
     $('#park-comments').show();
   };
 
-  parkController.loadParkPage = function(ctx) {
+  // parkController.loadParkPage = function(ctx) {
     // ui();
     // parkName= ctx.params.id;
     // var expRef = new Firebase('https://lonepark.firebaseio.com/parks/'+parkName);
@@ -38,11 +37,14 @@
     //   display(parkData);
     //   console.log(parkData);
     // });
+
+  parkController.loadParkPage = function(ctx, next) {
+
     ui();
     var park = Park.getById(ctx.params.id);
     console.log('park: '+park.name);
     park.makeForPage();
-
+    next();
   };
 
   parkController.ensureParkAll = function(ctx, next) {
@@ -50,13 +52,9 @@
     else { next(); }
   }
 
-
-   function display(value){
-    var template = Handlebars.compile($('#park-page-template').text());
-    $('#park-page').append(template(value));
-  }
-
   function ui() {
+    window.scrollTo(0, 0);
+
     $('#googleMap').hide();
     $('#feature-checklist').hide();
     $('#park-info').hide();

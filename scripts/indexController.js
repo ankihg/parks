@@ -10,6 +10,8 @@
 
 
   function ui() {
+    window.scrollTo(0, 0);
+    
     $('#park-comments').hide();
     $('#events').hide();
     $('#park-page').hide();
