@@ -19,20 +19,26 @@
   };
 
   parkController.loadParkPage = function(ctx) {
+    // ui();
+    // parkName= ctx.params.id;
+    // var expRef = new Firebase('https://lonepark.firebaseio.com/parks/'+parkName);
+    // expRef.on('value', function(snapshot){
+    //   var parkData = snapshot.val();
+    //   display(parkData);
+    //   console.log(parkData);
+    // });
     ui();
-    parkName= ctx.params.id;
-    var expRef = new Firebase('https://lonepark.firebaseio.com/parks/'+parkName);
-    expRef.on('value', function(snapshot){
-      var parkData = snapshot.val();
-      display(parkData);
-      console.log(parkData);
-    });
-    // if (Park.all.length === 0) { Park.fetchAll(); }
-    // console.log(Park.all);
-    // var park = Park.getById(ctx.params.id);
-    // console.log('park: '+park);
-    // park.makeForPage();
+    var park = Park.getById(ctx.params.id);
+    console.log('park: '+park.name);
+    park.makeForPage();
+
   };
+
+  parkController.ensureParkAll = function(ctx, next) {
+    if (Park.all.length === 0) { Park.fetchAll(next); }
+    else { next(); }
+  }
+
 
    function display(value){
     var template = Handlebars.compile($('#park-page-template').text());
