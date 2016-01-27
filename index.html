@@ -29,8 +29,8 @@
     <script id='park-index-template'  type='text/x-handlebars-template'>
       <div id="{{id}}" class='row park-index'>
         <div id='street-view' class='one-half column'>
-          <div id="{{this.id}}-map" class='map'></div>
-          <div id="{{this.id}}-pano" class='pano'></div>
+          <div id="{{id}}-map" class='map'></div>
+          <div id="{{id}}-pano" class='pano'></div>
         </div>
 
         <div class='one-half column'>
@@ -39,12 +39,36 @@
           <h4>{{address}}</h4>
           <!-- <a href="/parks/{{id}}">More Information</a> -->
         </div>
-
       </div>
     </script>
 
     <script id='park-page-template'  type='text/x-handlebars-template'>
-      <h4>Welcome to {{name}}</h4>
+      <div id='park-page'>
+      <h1>Welcome to {{name}}</h1>
+
+      <div id="{{id}}" class='row'>
+        <div id='page-map' class='two-thirds column'>
+          <div id="{{id}}-page-map" class='page-map'></div>
+        </div>
+
+        <div class='one-third column'>
+          <div class='fontImg'>{{{featuresDisplay}}}</div>
+          <h5>{{address}}</h5>
+          <h6>({{lat}}, {{lng}})</h6>
+          <div><a href={{govURL}} target="_blank">seattle.gov/{{id}}</a></div>
+        </div>
+      </div>
+
+
+      <div class='row'>
+        <div id='page-street-view'>
+          <div id="{{id}}-help-map"></div>
+          <div id="{{id}}-page-street-view" class='page-pano'></div>
+        </div>
+      </div>
+
+
+      </div>
     </script>
 
   </head>

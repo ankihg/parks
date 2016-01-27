@@ -4,7 +4,7 @@
     // console.log('new park: '+elm);
 
     this.name = elm[9];
-    this.id = this.name.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").replace(/ /g, '-' );
+    this.id = this.name.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").replace(/ /g, '-' ).toLowerCase();
 
     this.features = [];
     this.features.push(elm[8]);
@@ -103,6 +103,8 @@ Park.display = function() {
     var $parkPage = $('#park-page');
     $parkPage.empty();
     $parkPage.append(this.toParkPageHTML());
+    this.initPageMap();
+    this.initPageStreetView();
   }
 
   Park.prototype.toParkPageHTML = function() {
@@ -153,6 +155,37 @@ Park.display = function() {
     });
     var panorama = new google.maps.StreetViewPanorama(
         document.getElementById(this.id+'-pano'), {
+          position: loc,
+          pov: {
+            heading: 34,
+            pitch: 10
+          }
+        });
+    map.setStreetView(panorama);
+  };
+
+  Park.prototype.initPageMap = function() {
+    var loc = {lat: this.lat, lng: this.lng};
+    var map = new google.maps.Map(document.getElementById(this.id+'-page-map'), {
+      center: loc,
+      zoom: 17,
+      mapTypeId: google.maps.MapTypeId.SATELLITE
+    });
+    // var marker = new google.maps.Marker({
+    //   position: new google.maps.LatLng(this.lat, this.lng),
+    //   map: map,
+    //   icon: '/media/tree.png'
+    // });
+  };
+
+  Park.prototype.initPageStreetView = function() {
+    var loc = {lat: this.lat, lng: this.lng};
+    var map = new google.maps.Map(document.getElementById(this.id+'-help-map'), {
+      center: loc,
+      zoom: 14
+    });
+    var panorama = new google.maps.StreetViewPanorama(
+        document.getElementById(this.id+'-page-street-view'), {
           position: loc,
           pov: {
             heading: 34,
