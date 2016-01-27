@@ -5,16 +5,21 @@
 .main-nav li{
   list-style: none;
   display: inline;
+  font-size: 2.4rem;
 }
 
 footer {
   text-align: center;
 }
 
-@media only screen
-and (min-width: 375px)
-and (max-width: 667px){
-  .row{
-    width:100%;
+@media (max-width: 1070px) {
+  .main-nav ul {
+    display: none;
+  }
+  #logo {
+    width: 48%;
+  }
+  #weather {
+    width: 48%;
   }
 }

@@ -1,8 +1,12 @@
 #logo {
   font-family: 'Damion', cursive;
-  font-size: 4.5rem;
+  font-size: 4.2rem;
 }
- 
+
+#weather {
+  display: inline-block;
+}
+
 #googleMap {
   width: 100%;
   height: 600px;
