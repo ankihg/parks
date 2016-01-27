@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <title>Seattle Park Finder</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/styles/normalize.css">
-    <link rel="stylesheet" href="/styles/modules.css">
-    <link rel="stylesheet" href="/styles/skeleton.css">
-    <link rel="stylesheet" href="/styles/base.css">
-    <link rel="stylesheet" href="/styles/layout.css">
+    <link rel="stylesheet" href="styles/normalize.css">
+    <link rel="stylesheet" href="styles/skeleton.css">
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/layout.css">
+    <link rel="stylesheet" href="styles/modules.css">
+    <link href='https://fonts.googleapis.com/css?family=Damion|Lato' rel='stylesheet' type='text/css'>
     <script src="http://maps.googleapis.com/maps/api/js"></script>
     <script>
       // function initialize() {
@@ -38,6 +39,7 @@
           <a href="/parks/{{id}}"><h2>{{name}}</h2></a>
           <div class='features-display'>{{{featuresDisplay}}}</div>
           <h4>{{address}}</h4>
+          <h5>({{lat}}, {{lng}})</h5>
           <!-- <a href="/parks/{{id}}">More Information</a> -->
         </div>
       </div>
@@ -84,12 +86,11 @@
     <header class="row">
       <nav class="main-nav">
         <ul>
-          <li class="three columns" data-content="Seattle Park Finder"><a href="/"><h5>Seattle Park Finder</h5></a></li>
-          <li class="two columns" data-content="parks"><a href="/parks"><h5>Parks</h5></a></li>
-          <li class="two columns"><a href="/volunteer"><h5>Volunteer</h5></a></li>
-          <li class="two columns"><a href="/about-us"><h5>About Us</h5></a>
+          <li class="five columns" id="logo" data-content="Seattle Park Finder"><a href="/">Seattle Park Finder</a></li>
+          <li class="two columns"><a href="http://www.seattle.gov/parks/calendar/">Volunteer</a></li>
+          <li class="two columns"><a href="/about-us">About Us</a>
         </ul>
-        <div class="three columns"id="weather"></div>
+        <div class="three columns" id="weather"></div>
       </nav>
       <!-- <a href="/index.html"><img src="" alt="logo" /></a> -->
     </header>
@@ -146,7 +147,6 @@
     <script src="/scripts/park.js"></script>
     <script src="/scripts/indexView.js"></script>
     <script src="/scripts/indexController.js"></script>
-    <script src="/scripts/volunteerController.js"></script>
 
     <script src="/scripts/park.js"></script>
     <script src="/scripts/markerView.js"></script>

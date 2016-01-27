@@ -126,11 +126,11 @@ Park.display = function() {
   featureImgs['Picnic Sites'] = "/media/svg/picnic.svg";
   featureImgs['Waterfront'] = "/media/svg/beach57.svg";
   featureImgs['Beaches'] = "/media/svg/rest5.svg";
-  featureImgs['Environmental Learning  Centers'] = "/media/svg/seeds2.svg";
+  featureImgs['Enviro Learning Centers'] = "/media/svg/seeds2.svg";
   featureImgs['Boat Launches'] = "/media/svg/training.svg";
   featureImgs['Off Leash Areas'] = "/media/svg/running28.svg";
   featureImgs['Community Centers'] = "/media/svg/group49.svg";
-  featureImgs['Computer/Media Center'] = "/media/svg/pc6.svg";
+  featureImgs['Computer Centers'] = "/media/svg/pc6.svg";
   featureImgs['Gardens'] = "/media/svg/bloom1.svg";
   featureImgs['Pools'] = "/media/svg/swimming21.svg";
   Park.asImg = function(feature) {
@@ -171,11 +171,10 @@ Park.display = function() {
       zoom: 17,
       mapTypeId: google.maps.MapTypeId.SATELLITE
     });
-    // var marker = new google.maps.Marker({
-    //   position: new google.maps.LatLng(this.lat, this.lng),
-    //   map: map,
-    //   icon: '/media/tree.png'
-    // });
+    var marker = new google.maps.Marker({
+      position: new google.maps.LatLng(this.lat, this.lng),
+      map: map,
+    });
   };
 
   Park.prototype.initPageStreetView = function() {
