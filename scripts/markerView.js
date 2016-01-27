@@ -1,7 +1,7 @@
 
 var MapView = {};
 
-MapView.parksToMark = [];
+// MapView.parksToMark = [];
 MapView.markers = [];
 
 MapView.map = new google.maps.Map(document.getElementById('googleMap'), {
@@ -11,8 +11,10 @@ MapView.map = new google.maps.Map(document.getElementById('googleMap'), {
       });
 
 MapView.init = function() {
-  MapView.parksToMark = Park.all;
-  MapView.makeMarkers();
+  if (!MapView.parksToMark) {
+    MapView.parksToMark = Park.all;
+    MapView.makeMarkers();
+  }
 
   google.maps.event.addListener(MapView.map,'dragend', function() {
     Park.toDisplay = Park.filterForCheckedFeatures(Park.all);
