@@ -89,7 +89,8 @@ MapView.makeMarkers = function(){
     });
 
     var infowindow = new google.maps.InfoWindow({
-       content: 'Name:' + '<a href="/parks/' + p.id + '">' + p.name + '</a><br/>' + 'Address: ' + p.address
+      content: MapView.makeInfowindow(p)
+      //  content: 'Name:' + '<a href="/parks/' + p.id + '">' + p.name + '</a><br/>' + 'Address: ' + p.address
      });
 
      google.maps.event.addListener(marker,'click',function() {
@@ -113,3 +114,9 @@ MapView.updateLoc = function() {
   Park.toDisplay = Park.filterNearestN(Park.toDisplay, 10, MapView.map);
   Park.display();
 };
+
+MapView.makeInfowindow= function(park) {
+  var template = Handlebars.compile($('#park-infowindow-template').text());
+  if (!park.featuresDisplay) { park.makeFeaturesDisplay(); }
+  return template(park);
+}
