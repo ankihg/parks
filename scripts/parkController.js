@@ -19,7 +19,6 @@
     $('#feature-checklist').hide();
     $('#park-info').hide();
     $('#events').hide();
-
     $('#park-page').show();
     $('#park-comments').show();
   }

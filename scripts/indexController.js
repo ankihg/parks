@@ -3,7 +3,7 @@
   var indexController = {};
 
   indexController.index = function() {
-    console.log('indexController index');
+    // console.log('indexController index');
     ui();
     Park.fetchAll(indexView.index);
   }
