@@ -15,6 +15,8 @@
   }
 
   function ui() {
+    window.scrollTo(0, 0);
+
     $('#googleMap').hide();
     $('#feature-checklist').hide();
     $('#park-info').hide();
