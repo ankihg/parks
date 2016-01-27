@@ -18,9 +18,9 @@ comment.handleButton = function(){
   });
 };
 
-comment.loadAll = function(){
-  // console.log(ctx);
-  // console.log(ctx.params.id);
+comment.loadAll = function(ctx){
+  console.log(ctx);
+  console.log(ctx.params.id);
   dataRef.on('child_added', function(snapshot) {
     var newComment = snapshot.val();
     console.log(newComment);
@@ -34,7 +34,7 @@ comment.displayComment = function(comment){
   $('#comment-list').append(template(comment));
 };
 
-comment.handleButton();
+// comment.handleButton();
 comment.loadAll();
 
   module.comment = comment;
