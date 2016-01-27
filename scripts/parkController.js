@@ -12,14 +12,38 @@
   };
 
   parkController.byParkName = function(ctx){
+    var parkRef = new Firebase('https://lonepark.firebaseio.com/');
+    var idRef = parkRef.child('parks');
+
     parkName = ctx.params.id;
-    console.log($('.park-index').not('#'+parkName).hide());
-    console.log(Park.all);
+    $('#park-info').on('click','.park-index', function(){
+      var parkId = $(this)[0].id;
+      var a = $.grep(Park.all, function(e){
+        return e.id === parkId;
+        });
+      idRef.child(parkId).set(a[0]);
+      });
+      var expRef = new Firebase('https://lonepark.firebaseio.com/parks/'+parkName);
+      expRef.on('value', function(snapshot){
+        var parkData = snapshot.val();
+        parkController.displaySingle(parkData);
+        console.log(parkData);
+      });
+      // console.log(this)
+    // });
+    // console.log($('.park-index').not('#'+parkName).hide());
+    // console.log(Park.all);
+    $('#park-info').hide();
     $('#map-wrapper').hide();
     $('.park-index').not('#'+parkName).hide();
     $('#park-comments').show();
-    console.log('why does this not work');
+    // console.log('why does this not work');
   };
+
+  parkController.displaySingle = function(value){
+    var template = Handlebars.compile($('#park-index-template').text());
+    $('body').append(template(value));
+  }
 
   module.parkController = parkController;
 })(window);
