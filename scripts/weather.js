@@ -5,7 +5,10 @@ $(document).ready(function() {
     woeid: '',
     unit: 'f',
     success: function(weather) {
-      html = '<p>'+weather.forecast[0].date+'<br>Temp: '+weather.temp+'&deg;'+weather.units.temp+' Humidity: '+weather.humidity+'%'+'Sunset: '+weather.sunset+'</p>';
+      html = '<h6>'+weather.city+' '+weather.forecast[0].date+'</h6>';
+      html += '<img style="float:right;" width="80px" src="./media/weather/'+weather.code+'.png">';
+      html += '<h6>Temp: '+weather.temp+'&deg;'+weather.units.temp+' '+weather.currently+'</h6>';
+      html += '<h6>Sunset: '+weather.sunset+'</h6>';
       console.log("workinghere");
 
       $("#weather").html(html);
