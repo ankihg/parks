@@ -4,12 +4,11 @@ var comment = {};
 var dataRef = new Firebase('https://scorching-inferno-738.firebaseio.com/');
 
 
-comment.handleButton = function(){
+comment.handleButton = function(ctx){
   $('#comment-button').on('click', function(evt){
     evt.preventDefault();
-    // console.log(ctx);
-    // console.log(ctx.params);
-    // var commentId = ctx.params.id;
+    var parkId = ctx.params.id;
+    console.log(parkId);
     var commentBody = $('#comment-input').val();
     var park = $('#parkName-input').val();
     dataRef.push({name: park, text: commentBody});
@@ -18,9 +17,7 @@ comment.handleButton = function(){
   });
 };
 
-comment.loadAll = function(ctx){
-  console.log(ctx);
-  console.log(ctx.params.id);
+comment.loadAll = function(){
   dataRef.on('child_added', function(snapshot) {
     var newComment = snapshot.val();
     console.log(newComment);
