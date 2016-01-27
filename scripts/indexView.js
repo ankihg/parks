@@ -12,7 +12,7 @@
 
   function populateChecklist() {
     Park.allFeatures().forEach(function(feature) {
-      var optionTag = '<div class="col-sm-4"><li><label for="chk1"><input type="checkbox" name="chk1" value="'+feature+'"> '+feature+Park.asImg(feature)+'</label></li></div>';
+      var optionTag = '<div class="col-sm-4"><li><label for="chk1"><input type="checkbox" name="chk1" value="'+feature+'"> '+Park.asImg(feature)+feature+'</label></li></div>';
       console.log(optionTag);
       $('#feature-checklist').append(optionTag);
     });
