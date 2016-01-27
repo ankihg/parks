@@ -20,10 +20,24 @@
 
   parkController.loadParkPage = function(ctx) {
     ui();
-    if (Park.all.length === 0) { Park.fetchAll(); }
-    var park = Park.getById(ctx.params.id);
-    park.makeForPage();
+    parkName= ctx.params.id;
+    var expRef = new Firebase('https://lonepark.firebaseio.com/parks/'+parkName);
+    expRef.on('value', function(snapshot){
+      var parkData = snapshot.val();
+      display(parkData);
+      console.log(parkData);
+    });
+    // if (Park.all.length === 0) { Park.fetchAll(); }
+    // console.log(Park.all);
+    // var park = Park.getById(ctx.params.id);
+    // console.log('park: '+park);
+    // park.makeForPage();
   };
+
+   function display(value){
+    var template = Handlebars.compile($('#park-page-template').text());
+    $('#park-page').append(template(value));
+  }
 
   function ui() {
     $('#googleMap').hide();
@@ -32,7 +46,6 @@
 
     $('#park-page').show();
     $('#park-comments').show();
-
   }
 
   module.parkController = parkController;
