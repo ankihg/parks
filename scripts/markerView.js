@@ -32,7 +32,7 @@ MapView.init = function() {
     MapView.centerMarker = new google.maps.Marker({
       position: MapView.map.getCenter(),
       map: MapView.map,
-      icon: '/media/x.png'
+      icon: '/media/crosshair.png'
     });
   }
 
