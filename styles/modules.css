@@ -1,6 +1,24 @@
 #logo {
   font-family: 'Damion', cursive;
-  font-size: 4.5rem;
+  font-size: 4.4rem;
+  margin-top: 31px;
+}
+
+#weather {
+  display: block;;
+  font-size: 1.9rem;
+}
+
+#weather small {
+  font-size: 1.2rem;
+}
+
+#weather-img {
+  float: left;
+  width: 55px;
+  height: 55px;
+  margin-left: 19px;
+  margin-right: 19px;
 }
 
 #googleMap {
@@ -61,4 +79,30 @@ label img {
 
 #about-us {
   text-align: center;
+}
+
+@media (min-width:770px) and (max-width: 1070px) {
+  .main-nav ul li {
+    display: none;
+  }
+  #logo {
+    display: inline;
+    width: 65.3333333333%;
+  }
+  #weather {
+    width: 30.6666666667%;
+  }
+}
+
+@media (max-width: 770px) {
+  .main-nav ul li {
+    display: none;
+  }
+  #logo {
+    display: inline;
+    width: 100%;
+  }
+  #weather {
+    display: none;
+  }
 }

@@ -1,5 +1,4 @@
 $(document).ready(function() {
-  console.log('in weather.js');
   $.simpleWeather({
     location: 'Seattle, WA',
     woeid: '',
@@ -7,11 +6,9 @@ $(document).ready(function() {
     success: function(weather) {
       // html = '<h6>'+weather.city+' '+weather.forecast[0].date+'</h6>';
       var html = "";
-      html += '<img style="float:right; width: 39%; height: 35%; margin-right: 10%;" src="/media/weather/'+weather.code+'.png">';
-      html += '<br><h6>'+weather.currently+'<br>Temp: '+weather.temp+'&deg;'+weather.units.temp+'</h6>';
-      html += '<div style="line-height:0%;"><small>Sunrise: '+weather.sunrise+' &nbsp; | &nbsp; Sunset: '+weather.sunset+'</small></div>';
-      console.log("workinghere");
-
+      html += '<img id="weather-img" src="/media/weather/'+weather.code+'.png">';
+      html += '<span>'+weather.currently+'</span><br><span>'+weather.temp+'&deg;'+weather.units.temp+'</span>';
+      html += '<small><br>Sunrise: '+weather.sunrise+' &nbsp; | &nbsp; Sunset: '+weather.sunset+'</small>';
       $("#weather").html(html);
     },
     error: function(error) {
