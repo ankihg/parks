@@ -69,6 +69,8 @@
       }
     });
 
+    Park.toDisplay = [];
+
     var n = Math.min(10, Park.all.length);
     for (var i=0; i<n; i++ ) {
       Park.toDisplay.push(Park.all[i]);
