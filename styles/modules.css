@@ -104,8 +104,9 @@ label img {
   #weather {
     display: none;
   }
-  #googleMap {
+  #map-wrapper section {
     width: 100%;
-    
+    margin-bottom: 30px;
+    margin-left: 0;
   }
 }
