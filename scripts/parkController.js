@@ -60,7 +60,6 @@
     $('#park-info').hide();
     $('#events').hide();
     $('#about-us').hide();
-
     $('#park-page').show();
     $('#park-comments').show();
   }
