@@ -1,3 +1,4 @@
+"use strict";
 (function(module) {
 
   var indexController = {};
@@ -6,7 +7,7 @@
     // console.log('indexController index');
     ui();
     Park.fetchAll(indexView.index);
-  }
+  };
 
 
   function ui() {

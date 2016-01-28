@@ -1,3 +1,4 @@
+"use strict";
 (function(module){
   parkController = {};
 
@@ -21,7 +22,7 @@
   parkController.ensureParkAll = function(ctx, next) {
     if (Park.all.length === 0) { Park.fetchAll(next); }
     else { next(); }
-  }
+  };
 
   function ui() {
     window.scrollTo(0, 0);
