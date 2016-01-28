@@ -1,8 +1,7 @@
+"use strict";
 (function(module) {
 
   var Park = function(elm) {
-    // console.log('new park: '+elm);
-
     this.name = elm[9];
     this.id = this.name.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").replace(/ /g, '-' ).toLowerCase();
 
@@ -13,84 +12,82 @@
     this.govURL = elm[11][0];
     this.lng = parseFloat(elm[12]);
     this.lat = parseFloat(elm[13]);
-
-    // console.log(this);
   };
 
   Park.all = [];
   Park.toDisplay = [];
 
-Park.fetchAll = function(callNext) {
-  if (localStorage.rawData) {
-    Park.checkUpdate(callNext); //calls load either way
-  } else {
-    Park.update(callNext);
-  }
-};
-
-Park.update = function(callNext) {
- $.getJSON('/data/parkFeatures.json', function(data, message, xhr) {
-    Park.load(data.data);
-    localStorage.rawData = JSON.stringify(data);
-    localStorage.etag = xhr.getResponseHeader('eTag');
-     if (callNext) { callNext(); }
-  });
-
-};
-
-Park.checkUpdate = function(callNext) {
-  $.ajax({
-  type: 'HEAD',
-  url: "/data/parkFeatures.json",
-  complete: function(data) {
-    var etag = data.getResponseHeader('eTag');
-    if (localStorage.etag !== etag) {
-      Park.update(callNext);
+  Park.fetchAll = function(callNext) {
+    if (localStorage.rawData) {
+      Park.checkUpdate(callNext); //calls load either way
     } else {
-      Park.load(JSON.parse(localStorage.rawData).data);
-      if (callNext) { callNext(); }
+      Park.update(callNext);
     }
-  }
-  });
-};
+  };
 
-Park.load = function(rawData) {
-  Park.all = [];
-
-  rawData.map(function(elm) {
-    //handle repeat parks for each feature in parkFeatures.json
-    var parkNames = Park.all.map(function(p) {
-      return p.name;
+  Park.update = function(callNext) {
+    $.getJSON('/data/parkFeatures.json', function(data, message, xhr) {
+      Park.load(data.data);
+      localStorage.rawData = JSON.stringify(data);
+      localStorage.etag = xhr.getResponseHeader('eTag');
+      if (callNext) { callNext(); }
     });
 
-    var parkIndex = parkNames.indexOf(elm[9]);
+  };
 
-    if (parkIndex === -1) { //not in Park.all, make park
-      Park.all.push(new Park(elm));
-    } else { // in Park.all, just push new feature to park.features
-      Park.all[parkIndex].features.push(elm[8]);
+  Park.checkUpdate = function(callNext) {
+    $.ajax({
+      type: 'HEAD',
+      url: "/data/parkFeatures.json",
+      complete: function(data) {
+        var etag = data.getResponseHeader('eTag');
+        if (localStorage.etag !== etag) {
+          Park.update(callNext);
+        } else {
+          Park.load(JSON.parse(localStorage.rawData).data);
+          if (callNext) { callNext(); }
+        }
+      }
+    });
+  };
+
+  Park.load = function(rawData) {
+    Park.all = [];
+
+    rawData.map(function(elm) {
+      //handle repeat parks for each feature in parkFeatures.json
+      var parkNames = Park.all.map(function(p) {
+        return p.name;
+      });
+
+      var parkIndex = parkNames.indexOf(elm[9]);
+
+      if (parkIndex === -1) { //not in Park.all, make park
+        Park.all.push(new Park(elm));
+      } else { // in Park.all, just push new feature to park.features
+        Park.all[parkIndex].features.push(elm[8]);
+      }
+    });
+
+    var n = Math.min(10, Park.all.length);
+    for (var i=0; i<n; i++ ) {
+      Park.toDisplay.push(Park.all[i]);
     }
-  });
 
-  var n = Math.min(10, Park.all.length);
-  for (var i=0; i<n; i++ ) {
-    Park.toDisplay.push(Park.all[i]);
-  }
+    Park.display();
+  };
 
-  Park.display();
-};
-
-Park.display = function() {
-  $('#park-info').empty();
-  Park.toDisplay.map(function(p) {
-    p.makeForIndex();
-  });
-}
+  Park.display = function() {
+    $('#park-info').empty();
+    Park.toDisplay.map(function(p) {
+      p.makeForIndex();
+    });
+  };
 
   Park.prototype.makeForIndex = function() {
     $('#park-info').append(this.toParkIndexHTML());
     this.initStreetView();
-  }
+  };
 
 
   Park.prototype.toParkIndexHTML = function() {
@@ -105,13 +102,13 @@ Park.display = function() {
     $parkPage.append(this.toParkPageHTML());
     this.initPageMap();
     this.initPageStreetView();
-  }
+  };
 
   Park.prototype.toParkPageHTML = function() {
     var template = Handlebars.compile($('#park-page-template').text());
     this.makeFeaturesDisplay();
     return template(this);
-  }
+  };
 
   var featureImgs = new Object();
   featureImgs['Basketball Courts'] = "/media/svg/ball23.svg";
@@ -137,11 +134,11 @@ Park.display = function() {
     var img = featureImgs[feature];
     if (img) { return "<img src="+img+">"; }
     else { return "<img src=/media/svg/tree101.svg>"; }
-  }
+  };
 
   Park.prototype.makeFeaturesDisplay = function() {
     this.featuresDisplay = "";
-     for (var i=0; i<this.features.length; i++) {
+    for (var i=0; i<this.features.length; i++) {
       var f = this.features[i];
       this.featuresDisplay += Park.asImg(f);
     };
@@ -225,7 +222,7 @@ Park.display = function() {
       }
       return true;
     });
-  }
+  };
 
   Park.getNearestN = function(n, map) {
     Park.all.sort(function(a,b) {
@@ -244,7 +241,7 @@ Park.display = function() {
   Park.prototype.distFromCenter = function(map) {
     this.distFromMapCenter = Park.findDistance(new google.maps.LatLng(this.lat, this.lng), map.getCenter());
     return this.distFromMapCenter;
-  }
+  };
 
   Park.findDistance = function(p1, p2) {
     //http://stackoverflow.com/questions/1502590/calculate-distance-between-two-points-in-google-maps-v3

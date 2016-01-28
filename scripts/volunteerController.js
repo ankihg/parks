@@ -1,6 +1,7 @@
+"use strict";
 (function(module){
 
-  volunteerController = {};
+  var volunteerController = {};
 
   volunteerController.index = function(){
     ui();
