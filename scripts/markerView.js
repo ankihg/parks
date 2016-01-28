@@ -12,8 +12,8 @@ MapView.map;
 
 MapView.makeMainMap = function() {
   MapView.map = new google.maps.Map(document.getElementById('googleMap'), {
-    zoom: 10,
-    center: new google.maps.LatLng(47.53, -122.30),
+    zoom: 11,
+    center: new google.maps.LatLng(47.61913, -122.341049),
     mapTypeId: google.maps.MapTypeId.ROADMAP
   });
 };
