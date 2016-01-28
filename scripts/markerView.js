@@ -6,13 +6,44 @@ MapView.markers = [];
 MapView.centerMarker;
 MapView.geoMarker;
 
-MapView.map = new google.maps.Map(document.getElementById('googleMap'), {
-  zoom: 10,
-  center: new google.maps.LatLng(47.53, -122.30),
-  mapTypeId: google.maps.MapTypeId.ROADMAP
-});
+MapView.map;
 
 // var posInfoWindow = new google.maps.InfoWindow({map: MapView.map});
+
+MapView.makeMainMap = function() {
+  MapView.map = new google.maps.Map(document.getElementById('googleMap'), {
+    zoom: 10,
+    center: new google.maps.LatLng(47.53, -122.30),
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  });
+};
+
+MapView.init = function() {
+  if (!MapView.map) { MapView.makeMainMap(); }
+
+  MapView.setGeolocation();
+
+  if (!MapView.parksToMark) {
+    MapView.parksToMark = Park.all;
+    MapView.makeMarkers();
+  }
+
+  if (!MapView.centerMarker) {
+    MapView.centerMarker = new google.maps.Marker({
+      position: MapView.map.getCenter(),
+      map: MapView.map,
+      icon: '/media/x.png'
+    });
+  }
+
+  google.maps.event.addListener(MapView.map,'dragend', function() {
+    MapView.updateLoc();
+  });
+
+  google.maps.event.addListener(MapView.map,'center_changed', function() {
+    MapView.centerMarker.setPosition(MapView.map.getCenter());
+  });
+};
 
 MapView.setGeolocation = function() {
   if (navigator.geolocation) {
@@ -49,31 +80,6 @@ MapView.setGeolocation = function() {
 
     });
   }
-};
-
-MapView.init = function() {
-  MapView.setGeolocation();
-
-  if (!MapView.parksToMark) {
-    MapView.parksToMark = Park.all;
-    MapView.makeMarkers();
-  }
-
-  if (!MapView.centerMarker) {
-    MapView.centerMarker = new google.maps.Marker({
-      position: MapView.map.getCenter(),
-      map: MapView.map,
-      icon: '/media/x.png'
-    });
-  }
-
-  google.maps.event.addListener(MapView.map,'dragend', function() {
-    MapView.updateLoc();
-  });
-
-  google.maps.event.addListener(MapView.map,'center_changed', function() {
-    MapView.centerMarker.setPosition(MapView.map.getCenter());
-  });
 };
 
 MapView.makeMarkers = function(){
