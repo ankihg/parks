@@ -29,9 +29,8 @@
 #feature-checklist {
   overflow-y: scroll;
   border-style: solid;
-  height: 594px;
-  padding: 0 15px 0 15px;
-  margin-bottom: 0;
+  height: 554px;
+  padding: 20px;
 }
 
 label img {
@@ -104,5 +103,9 @@ label img {
   }
   #weather {
     display: none;
+  }
+  #googleMap {
+    width: 100%;
+    
   }
 }
