@@ -32,7 +32,7 @@
         comment.displayComment(newComment);
       }
     });
-    next();
+    if (next) { next(); }
   };
 
   comment.displayComment = function(comment){

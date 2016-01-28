@@ -1,13 +1,15 @@
-"use strict";
 (function(module){
-  var parkController = {};
+  parkController = {};
 
   parkController.about = function(){
-    $('.park-index').hide();
+    $('#park-info').hide();
     $('#googleMap').hide();
     $('#park-comments').hide();
     $('#events').hide();
     $('#feature-checklist').hide();
+    $('#park-page').hide();
+
+
     $('#about-us').show();
   };
 
@@ -15,22 +17,24 @@
     ui();
     var park = Park.getById(ctx.params.id);
     park.makeForPage();
-    next();
+    if (next) { next(); }
   };
 
   parkController.ensureParkAll = function(ctx, next) {
     if (Park.all.length === 0) { Park.fetchAll(next); }
-    else { next(); }
+    else if (next) { next(); }
   };
 
   function ui() {
-    window.scrollTo(0, 0);
-
-    $('#googleMap').hide();
     $('#feature-checklist').hide();
+    $('#googleMap').hide();
     $('#park-info').hide();
     $('#events').hide();
     $('#about-us').hide();
+
+    window.scrollTo(0, 0);
+
+
     $('#park-page').show();
     $('#park-comments').show();
   }
