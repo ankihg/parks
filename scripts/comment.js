@@ -14,7 +14,7 @@ comment.handleButton = function(ctx, next){
   console.log('outside: ', parkId);
 
   $('#comment-button').on('click', function(evt){
-    // evt.preventDefault();
+    evt.preventDefault();
     console.log('inside parkid: ', parkId);
     var commentBody = $('#comment-input').val();
     var park = $('#parkName-input').val();
