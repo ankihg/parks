@@ -145,20 +145,49 @@
   };
 
   Park.prototype.initStreetView = function() {
+    // var loc = {lat: this.lat, lng: this.lng};
+    // var map = new google.maps.Map(document.getElementById(this.id+'-map'), {
+    //   center: loc,
+    //   zoom: 14
+    // });
+    // var panorama = new google.maps.StreetViewPanorama(
+    //     document.getElementById(this.id+'-pano'), {
+    //       position: loc,
+    //       pov: {
+    //         heading: 34,
+    //         pitch: 10
+    //       }
+    //     });
+    // map.setStreetView(panorama);
+
     var loc = {lat: this.lat, lng: this.lng};
+
+    var sv = new google.maps.StreetViewService();
+
+    var panorama = new google.maps.StreetViewPanorama(document.getElementById(this.id+'-pano'));
+
+    // Set up the map.
     var map = new google.maps.Map(document.getElementById(this.id+'-map'), {
       center: loc,
-      zoom: 14
+      zoom: 16,
+      streetViewControl: false
     });
-    var panorama = new google.maps.StreetViewPanorama(
-        document.getElementById(this.id+'-pano'), {
-          position: loc,
-          pov: {
-            heading: 34,
-            pitch: 10
-          }
+
+    var park = this;
+    sv.getPanorama({location: loc }, function(data, status) {
+      if (status === google.maps.StreetViewStatus.OK) {
+        panorama.setPano(data.location.pano);
+        panorama.setVisible(true);
+      } else {
+        // replace pano with map
+        var map = new google.maps.Map(document.getElementById(park.id+'-pano'), {
+          center: loc,
+          zoom: 17,
+          mapTypeId: google.maps.MapTypeId.SATELLITE
         });
-    map.setStreetView(panorama);
+      }
+    });
+
   };
 
   Park.prototype.initPageMap = function() {
