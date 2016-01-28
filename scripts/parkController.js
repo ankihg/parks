@@ -1,6 +1,6 @@
 "use strict";
 (function(module){
-  parkController = {};
+  var parkController = {};
 
   parkController.about = function(){
     $('.park-index').hide();
@@ -14,7 +14,6 @@
   parkController.loadParkPage = function(ctx, next) {
     ui();
     var park = Park.getById(ctx.params.id);
-    console.log('park: '+park.name);
     park.makeForPage();
     next();
   };
