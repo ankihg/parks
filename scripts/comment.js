@@ -10,10 +10,10 @@ function time() {
 }
 
 comment.handleButton = function(ctx, next){
-  var parkId = ctx.params.id;
-  console.log('outside: ', parkId);
-
+  // console.log('outside: ', parkId);
   $('#comment-button').on('click', function(evt){
+    // var parkId = ctx.params.id;
+    var parkId = window.location.pathname.split('/')[2];
     evt.preventDefault();
     console.log('inside parkid: ', parkId);
     var commentBody = $('#comment-input').val();
@@ -42,7 +42,6 @@ comment.displayComment = function(comment){
   var template = Handlebars.compile($('#comment-template').text());
   $('#comment-list').append(template(comment));
 };
-
 
   module.comment = comment;
 })(window);
