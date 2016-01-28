@@ -9,13 +9,10 @@ function time() {
   return thisDate.join('/');
 }
 
-comment.handleButton = function(ctx, next){
-  // console.log('outside: ', parkId);
+comment.handleButton = function(){
   $('#comment-button').on('click', function(evt){
-    // var parkId = ctx.params.id;
-    var parkId = window.location.pathname.split('/')[2];
     evt.preventDefault();
-    console.log('inside parkid: ', parkId);
+    var parkId = window.location.pathname.split('/')[2];
     var commentBody = $('#comment-input').val();
     var park = $('#parkName-input').val();
     if (commentBody && park !== "") {
@@ -30,7 +27,6 @@ comment.loadAll = function(ctx, next){
   $('#comment-list').empty();
   dataRef.on('child_added', function(snapshot) {
     var newComment = snapshot.val();
-    console.log('appending ctx: ',ctx.params.id);
     if(newComment.id === ctx.params.id) {
       comment.displayComment(newComment);
     }
@@ -42,6 +38,8 @@ comment.displayComment = function(comment){
   var template = Handlebars.compile($('#comment-template').text());
   $('#comment-list').append(template(comment));
 };
+
+comment.handleButton();
 
   module.comment = comment;
 })(window);
