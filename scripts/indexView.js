@@ -4,7 +4,7 @@
   var indexView = {};
 
   indexView.index = function() {
-    if ($('#feature-checklist').children().length === 0) {
+    if ($('#feature-checklist').find('li').length === 0) {
       populateChecklist();
       handleChecklist();
     }
