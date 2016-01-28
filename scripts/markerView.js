@@ -63,7 +63,7 @@ MapView.setGeolocation = function() {
         MapView.geoMarker = new google.maps.Marker({
           position: new google.maps.LatLng( position.coords.latitude, position.coords.longitude),
           map: MapView.map,
-          icon: '/media/circle.png'
+          icon: 'http://maps.google.com/intl/en_us/mapfiles/ms/micons/blue.png'
         });
 
         var infowindow = new google.maps.InfoWindow({
@@ -71,7 +71,6 @@ MapView.setGeolocation = function() {
         });
 
         google.maps.event.addListener(MapView.geoMarker ,'click',function() {
-          // infowindow.open(MapView.map,MapView.geoMarker );
           MapView.setGeolocation();
         });
       } else {
