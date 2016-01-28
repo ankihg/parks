@@ -1,5 +1,8 @@
 .row {
   margin-bottom: 30px;
+  background-color: #f2f2f2;
+  padding: 5px;
+  margin: 0;
 }
 
 .main-nav li {
@@ -7,6 +10,11 @@
   margin-top: 57px;
 }
 
+header{
+  background-image:url("/media/111.jpg");
+}
+
 footer {
   text-align: center;
+  background-color: #53a91a !important;
 }
