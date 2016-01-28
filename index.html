@@ -24,8 +24,8 @@
     </script>
     <script id='comment-template'  type='text/x-handlebars-template'>
       <div class = "comments-wrapper {{id}}">
-        <p>Posted: {{time}}</p>
-        <p>Name: {{name}}</p>
+        <h5>{{name}}</h5>
+        <p>{{time}}</p>
         <p>{{text}}</p>
       </div>
     </script>
@@ -108,14 +108,14 @@
       <section class="row" id="park-info"></section>
       <section class="row" id="park-page"></section>
       <section class="row" id="park-comments">
-        <h5>Comments:</h5>
+        <h3>Comments</h3>
         <section id="comment-list"></section>
         <form class="" action="index.html" method="post">
           <label>
             <input type="text" id="parkName-input" placeholder="Name" value="">
           </label>
           <label>
-            <input type="text" id="comment-input" placeholder="Add Comment">
+            <textarea id="comment-input" placeholder="Add Comment"></textarea>
           </label>
           <button type="submit" id="comment-button" name="button">Add Comment</button>
         </form>
