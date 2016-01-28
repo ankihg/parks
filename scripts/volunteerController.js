@@ -14,6 +14,7 @@
     $('#events').show();
     $('#park-page').hide();
     $('#park-comments').hide();
+    $('#about-us').hide();
   }
   module.volunteerController = volunteerController;
 })(window);
