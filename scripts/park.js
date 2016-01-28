@@ -134,7 +134,7 @@
   featureImgs['Pools'] = "/media/svg/swimming21.svg";
   Park.asImg = function(feature) {
     var img = featureImgs[feature];
-    if (img) { return "<img src="+img+">"; }
+    if (img) { return "<img title="+feature+" src="+img+">"; }
     else { return "<img src=/media/svg/tree101.svg>"; }
   };
 
