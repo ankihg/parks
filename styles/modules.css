@@ -80,6 +80,48 @@ label img {
   text-align: center;
 }
 
+#park-comments h3 {
+  color: #53a91a;
+  border-bottom:dashed 1px black;
+}
+
+form {
+  padding-top:25px;
+  border-top:dashed black 1px;
+}
+
+.comments-wrapper {
+  margin-bottom: 25px;
+  border:1px solid #D9ECD2;
+  border-radius: 5px;
+}
+
+.comments-wrapper p:last-child {
+  border-top:1px dashed #D9ECD2;
+  padding: 10px 5px 5px;
+  margin-bottom:5px;
+  font-size: 1em;
+  display:block;
+  max-width: 60%;
+}
+
+.comments-wrapper p {
+  display:inline;
+  font-size: .8em;
+  margin: 0px 10px 0px;
+}
+
+.comments-wrapper h5 {
+  display:inline;
+  margin: 0px 8px 0px 10px;
+}
+
+#comment-input {
+  width: 50%;
+  box-sizing:border-box;
+  height:20px;
+}
+
 @media (min-width:770px) and (max-width: 1070px) {
   .main-nav ul li {
     display: none;
