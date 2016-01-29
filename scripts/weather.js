@@ -20,7 +20,7 @@ $(document).ready(function() {
     function random(min,max){
       return Math.floor(Math.random()*(max -min) + min);
     };
-    if (Park.all.length !== 0) {
+    if (Park.all) {
       var randomPark = random(0,520);
       var parkId = Park.all[randomPark].id;
       return parkId;
