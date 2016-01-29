@@ -36,6 +36,8 @@ MapView.init = function() {
     });
   }
 
+  MapView.makeToggleFilterButton();
+
   google.maps.event.addListener(MapView.map,'dragend', function() {
     MapView.updateLoc();
   });
@@ -122,4 +124,20 @@ MapView.makeInfowindow= function(park) {
   var template = Handlebars.compile($('#park-infowindow-template').text());
   if (!park.featuresDisplay) { park.makeFeaturesDisplay(); }
   return template(park);
+};
+
+MapView.makeToggleFilterButton = function() {
+  var $toggleFilterButton = $('<button>');
+  $toggleFilterButton.attr('id', 'toggleFilterButton');
+  $toggleFilterButton.attr('type', 'button');
+  $toggleFilterButton.html('show filter');
+  console.log($toggleFilterButton);
+
+  var buttonDiv = document.createElement('button');
+  buttonDiv.id = 'toggleFilterButton';
+  buttonDiv.innerHTML = "show filter";
+  buttonDiv.onclick = function() {
+    console.log('hi from toggle filter button');
+  }
+  MapView.map.controls[google.maps.ControlPosition.TOP_RIGHT].push(buttonDiv);
 };
