@@ -20,8 +20,10 @@ $(document).ready(function() {
     function random(min,max){
       return Math.floor(Math.random()*(max -min) + min);
     };
-    var randomPark = random(0,520);
-    var parkId = Park.all[randomPark].id;
-    return parkId;
+    if (Park.all) {
+      var randomPark = random(0, Park.all.length);
+      var parkId = Park.all[randomPark].id;
+      return parkId;
+    };
   };
 });
