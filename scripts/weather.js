@@ -21,7 +21,7 @@ $(document).ready(function() {
       return Math.floor(Math.random()*(max -min) + min);
     };
     if (Park.all) {
-      var randomPark = random(0,520);
+      var randomPark = random(0, Park.all.length);
       var parkId = Park.all[randomPark].id;
       return parkId;
     };
