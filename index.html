@@ -83,67 +83,68 @@
 
   </head>
 
-  <body class="container">
-    <header class="row">
-      <nav class="main-nav">
-        <ul>
-          <li class="five columns" id="logo" data-content="Seattle Park Finder"><a href="/">Seattle Park Finder</a></li>
-          <li class="two columns"><a href="/volunteer">Volunteer</a></li>
-          <li class="two columns"><a href="/about-us">About Us</a>
-        </ul>
-        <div class="three columns" id="weather"></div>
-      </nav>
-    </header>
+  <body>
+    <div id="header-background"></div>
+    <div class="container">
+      <header class="row">
+        <nav class="main-nav">
+          <ul>
+            <li class="five columns" id="logo" data-content="Seattle Park Finder"><a href="/">Seattle Park Finder</a></li>
+            <li class="two columns"><a href="/volunteer">Volunteer</a></li>
+            <li class="two columns"><a href="/about-us">About Us</a>
+          </ul>
+          <div class="three columns" id="weather"></div>
+        </nav>
+      </header>
 
-    <main>
+      <main>
+        <div class="row" id="map-wrapper">
+          <!-- <section class="eight columns"> -->
+            <div id="googleMap" class="twelve columns" style="display:inline"></div>
+          <!-- </section> -->
+          <!-- <section class="four columns"> -->
+            <ul id='feature-checklist' class="four columns" style="display:none"></ul>
+          <!-- </section> -->
+        </div>
 
-      <div class="row" id="map-wrapper">
-        <!-- <section class="eight columns"> -->
-          <div id="googleMap" class="twelve columns" style="display:inline"></div>
-        <!-- </section> -->
-        <!-- <section class="four columns"> -->
-          <ul id='feature-checklist' class="four columns" style="display:none"></ul>
-        <!-- </section> -->
-      </div>
+        <section class="row" id="park-info"></section>
+        <section class="row" id="park-page"></section>
+        <section class="row" id="park-comments">
+          <h3>Comments</h3>
+          <section id="comment-list"></section>
+          <form class="" action="index.html" method="post">
+            <label>
+              <input type="text" id="parkName-input" placeholder="Name" value="">
+            </label>
+            <label>
+              <textarea id="comment-input" placeholder="Add Comment"></textarea>
+            </label>
+            <button type="submit" id="comment-button" name="button">Add Comment</button>
+          </form>
+        </section>
 
-      <section class="row" id="park-info"></section>
-      <section class="row" id="park-page"></section>
-      <section class="row" id="park-comments">
-        <h3>Comments</h3>
-        <section id="comment-list"></section>
-        <form class="" action="index.html" method="post">
-          <label>
-            <input type="text" id="parkName-input" placeholder="Name" value="">
-          </label>
-          <label>
-            <textarea id="comment-input" placeholder="Add Comment"></textarea>
-          </label>
-          <button type="submit" id="comment-button" name="button">Add Comment</button>
-        </form>
-      </section>
+        <section class="row" id="events">
+          <iframe src="https://calendar.google.com/calendar/embed?mode=AGENDA&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=elstad.nienow%40gmail.com&amp;color=%2329527A&amp;ctz=America%2FLos_Angeles" style="border-width:0" width="900" height="600" frameborder="0" scrolling="no"></iframe>
+        </section>
 
-      <section class="row" id="events">
-        <iframe src="https://calendar.google.com/calendar/embed?mode=AGENDA&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=elstad.nienow%40gmail.com&amp;color=%2329527A&amp;ctz=America%2FLos_Angeles" style="border-width:0" width="900" height="600" frameborder="0" scrolling="no"></iframe>
-      </section>
-
-      <section class="row" id="about-us">
-        <h5>Seattle Park Finder was created by</h5>
-        <h4><a href="http://ankihg.ucoz.com/" target="_blank">Annika Hagelin</a> , &nbsp; <a href="https://github.com/DTLivingstone" target="_blank">David Livingstone</a> , &nbsp; <a href="https://github.com/nienowt" target="_blank">Thom Nienow</a> , &nbsp; & &nbsp; <a href="https://github.com/cacizi41" target="_blank">Wenjing Qiang</a></h4>
+        <section class="row" id="about-us">
+          <h5>Seattle Park Finder was created by</h5>
+          <h4><a href="http://ankihg.ucoz.com/" target="_blank">Annika Hagelin</a> , &nbsp; <a href="https://github.com/DTLivingstone" target="_blank">David Livingstone</a> , &nbsp; <a href="https://github.com/nienowt" target="_blank">Thom Nienow</a> , &nbsp; & &nbsp; <a href="https://github.com/cacizi41" target="_blank">Wenjing Qiang</a></h4>
 
 
-        <h5>as a final project for</h5>
-        <h5><a href="https://www.codefellows.org/courses/code-301/intermediate-software-development" target="_blank">Code Fellows Code 301</a></h5>
+          <h5>as a final project for</h5>
+          <h5><a href="https://www.codefellows.org/courses/code-301/intermediate-software-development" target="_blank">Code Fellows Code 301</a></h5>
 
-        <br>
+          <br>
 
-        <h5>Data is provided by <a href="https://data.seattle.gov/" target="_blank">data.seattle.gov</a> and is found <a href="https://data.seattle.gov/Community/Parks-and-Park-Features/rhf2-u5fm" target="_blank">here</a></h5>
-        <h6>*Seattle Park Finder is not responsible for misinformation</h6>
+          <h5>Data is provided by <a href="https://data.seattle.gov/" target="_blank">data.seattle.gov</a> and is found <a href="https://data.seattle.gov/Community/Parks-and-Park-Features/rhf2-u5fm" target="_blank">here</a></h5>
+          <h6>*Seattle Park Finder is not responsible for misinformation</h6>
 
-      </section>
+        </section>
+      </main>
+    </div>
 
-    </main>
-
-    <footer class="row">
+    <footer>
       &copy; Parks and Recreation
     </footer>
 
@@ -162,6 +163,5 @@
     <script src="/scripts/comment.js"></script>
     <script src="/scripts/routes.js"></script>
     <script src="/scripts/weather.js"></script>
-
   </body>
 </html>
