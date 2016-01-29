@@ -129,25 +129,25 @@ MapView.makeInfowindow= function(park) {
 MapView.makeToggleFilterButton = function() {
   var buttonDiv = document.createElement('button');
   buttonDiv.id = 'toggleFilterButton';
-  buttonDiv.innerHTML = "show filter";
+  buttonDiv.innerHTML = "filter";
   buttonDiv.onclick = MapView.toggleFilterDisplay;
   MapView.map.controls[google.maps.ControlPosition.TOP_RIGHT].push(buttonDiv);
 };
 
 MapView.toggleFilterDisplay = function() {
-  if ($('#toggleFilterButton').text() === 'show filter') {
+  if ($('#toggleFilterButton').text() === 'filter') {
     $('#googleMap').removeClass('twelve').removeClass('columns');
     $('#googleMap').addClass('eight').addClass('columns');
 
     $('#feature-checklist').show();
 
-    $('#toggleFilterButton').text('hide filter');
+    $('#toggleFilterButton').text('hide');
   } else { //hide
     $('#googleMap').removeClass('eight').removeClass('columns');
     $('#googleMap').addClass('twelve').addClass('columns');
 
     $('#feature-checklist').hide();
 
-    $('#toggleFilterButton').text('show filter');
+    $('#toggleFilterButton').text('filter');
   }
 };
