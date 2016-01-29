@@ -38,6 +38,19 @@
   background-color: rgba(255, 255, 255, .6);
 }
 
+#feature-checklist::-webkit-scrollbar {
+    width: 15px;
+}
+
+#feature-checklist::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+
+#feature-checklist::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}
+
 label img {
   width: 25px;
   height: 25px;
@@ -80,6 +93,14 @@ label img {
   margin-bottom: 5px;
 }
 
+#park-page {
+  background-color: #f4f4f4;
+}
+
+#page-map {
+  margin-bottom: 30px;
+}
+
 #park-page h1 {
   text-align: center;
 }
@@ -87,6 +108,10 @@ label img {
 .page-map {
   width: 100%;
   height: 40rem;
+}
+
+#page-street-view {
+  margin-bottom: 30px;
 }
 
 .fontImg img {
@@ -98,6 +123,11 @@ label img {
 
 #about-us {
   text-align: center;
+  background-color: #f4f4f4;
+}
+
+#park-comments {
+  background-color: #f4f4f4;
 }
 
 #park-comments h3 {
