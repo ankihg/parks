@@ -135,8 +135,19 @@ MapView.makeToggleFilterButton = function() {
 };
 
 MapView.toggleFilterDisplay = function() {
-  console.log('toggle filter display');
-  $('#googleMap').removeClass('twelve').removeClass('columns');
-  $('#googleMap').addClass('eight').addClass('columns');
-  $('#feature-checklist').show();
+  if ($('#toggleFilterButton').text() === 'show filter') {
+    $('#googleMap').removeClass('twelve').removeClass('columns');
+    $('#googleMap').addClass('eight').addClass('columns');
+
+    $('#feature-checklist').show();
+
+    $('#toggleFilterButton').text('hide filter');
+  } else { //hide
+    $('#googleMap').removeClass('eight').removeClass('columns');
+    $('#googleMap').addClass('twelve').addClass('columns');
+
+    $('#feature-checklist').hide();
+
+    $('#toggleFilterButton').text('show filter');
+  }
 };
