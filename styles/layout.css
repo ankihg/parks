@@ -18,3 +18,13 @@ footer {
   text-align: center;
   background-color: #53a91a !important;
 }
+
+@media screen and (max-width: 550px) {
+  #feature-checklist {
+    height: 300px;
+  }
+
+  #googleMap {
+    height: 400px;
+  }
+}

@@ -36,6 +36,8 @@ MapView.init = function() {
     });
   }
 
+  MapView.makeToggleFilterButton();
+
   google.maps.event.addListener(MapView.map,'dragend', function() {
     MapView.updateLoc();
   });
@@ -122,4 +124,30 @@ MapView.makeInfowindow= function(park) {
   var template = Handlebars.compile($('#park-infowindow-template').text());
   if (!park.featuresDisplay) { park.makeFeaturesDisplay(); }
   return template(park);
+};
+
+MapView.makeToggleFilterButton = function() {
+  var buttonDiv = document.createElement('button');
+  buttonDiv.id = 'toggleFilterButton';
+  buttonDiv.innerHTML = "filter";
+  buttonDiv.onclick = MapView.toggleFilterDisplay;
+  MapView.map.controls[google.maps.ControlPosition.TOP_RIGHT].push(buttonDiv);
+};
+
+MapView.toggleFilterDisplay = function() {
+  if ($('#toggleFilterButton').text() === 'filter') {
+    $('#googleMap').removeClass('twelve').removeClass('columns');
+    $('#googleMap').addClass('eight').addClass('columns');
+
+    $('#feature-checklist').show();
+
+    $('#toggleFilterButton').text('hide');
+  } else { //hide
+    $('#googleMap').removeClass('eight').removeClass('columns');
+    $('#googleMap').addClass('twelve').addClass('columns');
+
+    $('#feature-checklist').hide();
+
+    $('#toggleFilterButton').text('filter');
+  }
 };
