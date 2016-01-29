@@ -127,11 +127,14 @@ MapView.makeInfowindow= function(park) {
 };
 
 MapView.makeToggleFilterButton = function() {
-  var buttonDiv = document.createElement('button');
-  buttonDiv.id = 'toggleFilterButton';
-  buttonDiv.innerHTML = "filter";
-  buttonDiv.onclick = MapView.toggleFilterDisplay;
-  MapView.map.controls[google.maps.ControlPosition.TOP_RIGHT].push(buttonDiv);
+  var buttonDiv = document.getElementById('toggleFilterButton');
+  if (!buttonDiv) {
+    buttonDiv = document.createElement('button');
+    buttonDiv.id = 'toggleFilterButton';
+    buttonDiv.innerHTML = "filter";
+    buttonDiv.onclick = MapView.toggleFilterDisplay;
+    MapView.map.controls[google.maps.ControlPosition.TOP_RIGHT].push(buttonDiv);
+  }
 };
 
 MapView.toggleFilterDisplay = function() {
