@@ -127,17 +127,16 @@ MapView.makeInfowindow= function(park) {
 };
 
 MapView.makeToggleFilterButton = function() {
-  var $toggleFilterButton = $('<button>');
-  $toggleFilterButton.attr('id', 'toggleFilterButton');
-  $toggleFilterButton.attr('type', 'button');
-  $toggleFilterButton.html('show filter');
-  console.log($toggleFilterButton);
-
   var buttonDiv = document.createElement('button');
   buttonDiv.id = 'toggleFilterButton';
   buttonDiv.innerHTML = "show filter";
-  buttonDiv.onclick = function() {
-    console.log('hi from toggle filter button');
-  }
+  buttonDiv.onclick = MapView.toggleFilterDisplay;
   MapView.map.controls[google.maps.ControlPosition.TOP_RIGHT].push(buttonDiv);
+};
+
+MapView.toggleFilterDisplay = function() {
+  console.log('toggle filter display');
+  $('#googleMap').removeClass('twelve').removeClass('columns');
+  $('#googleMap').addClass('eight').addClass('columns');
+  $('#feature-checklist').show();
 };
