@@ -19,7 +19,7 @@
 
   Park.fetchAll = function(callNext) {
     if (localStorage.rawData) {
-      Park.checkUpdate(callNext); //calls load either way
+      Park.checkUpdate(callNext);
     } else {
       Park.update(callNext);
     }
@@ -55,16 +55,15 @@
     Park.all = [];
 
     rawData.map(function(elm) {
-      //handle repeat parks for each feature in parkFeatures.json
       var parkNames = Park.all.map(function(p) {
         return p.name;
       });
 
       var parkIndex = parkNames.indexOf(elm[9]);
 
-      if (parkIndex === -1) { //not in Park.all, make park
+      if (parkIndex === -1) {
         Park.all.push(new Park(elm));
-      } else { // in Park.all, just push new feature to park.features
+      } else {
         Park.all[parkIndex].features.push(elm[8]);
       }
     });
@@ -147,20 +146,6 @@
   };
 
   Park.prototype.initStreetView = function() {
-    // var loc = {lat: this.lat, lng: this.lng};
-    // var map = new google.maps.Map(document.getElementById(this.id+'-map'), {
-    //   center: loc,
-    //   zoom: 14
-    // });
-    // var panorama = new google.maps.StreetViewPanorama(
-    //     document.getElementById(this.id+'-pano'), {
-    //       position: loc,
-    //       pov: {
-    //         heading: 34,
-    //         pitch: 10
-    //       }
-    //     });
-    // map.setStreetView(panorama);
 
     var loc = {lat: this.lat, lng: this.lng};
 
@@ -168,7 +153,6 @@
 
     var panorama = new google.maps.StreetViewPanorama(document.getElementById(this.id+'-pano'));
 
-    // Set up the map.
     var map = new google.maps.Map(document.getElementById(this.id+'-map'), {
       center: loc,
       zoom: 16,
@@ -181,7 +165,6 @@
         panorama.setPano(data.location.pano);
         panorama.setVisible(true);
       } else {
-        // replace pano with map
         var map = new google.maps.Map(document.getElementById(park.id+'-pano'), {
           center: loc,
           zoom: 17,
@@ -275,7 +258,6 @@
   };
 
   Park.findDistance = function(p1, p2) {
-    //http://stackoverflow.com/questions/1502590/calculate-distance-between-two-points-in-google-maps-v3
     return google.maps.geometry.spherical.computeDistanceBetween(p1, p2);
   };
 

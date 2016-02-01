@@ -5,7 +5,6 @@ $(document).ready(function() {
     woeid: '',
     unit: 'f',
     success: function(weather) {
-      // html = '<h6>'+weather.city+' '+weather.forecast[0].date+'</h6>';
       var html = "";
       html += '<a href="/parks/'+randomPark()+'"><img id="weather-img" src="/media/weather/'+weather.code+'.png"></a>';
       html += '<span>'+weather.currently+'</span><br><span>'+weather.temp+'&deg;'+weather.units.temp+'</span>';
