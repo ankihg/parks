@@ -1,14 +1,10 @@
 "use strict";
 var MapView = {};
 
-// MapView.parksToMark = [];
 MapView.markers = [];
 MapView.centerMarker;
 MapView.geoMarker;
-
 MapView.map;
-
-// var posInfoWindow = new google.maps.InfoWindow({map: MapView.map});
 
 MapView.makeMainMap = function() {
   MapView.map = new google.maps.Map(document.getElementById('googleMap'), {
@@ -95,7 +91,6 @@ MapView.makeMarkers = function(){
 
     var infowindow = new google.maps.InfoWindow({
       content: MapView.makeInfowindow(p)
-      //  content: 'Name:' + '<a href="/parks/' + p.id + '">' + p.name + '</a><br/>' + 'Address: ' + p.address
     });
 
     google.maps.event.addListener(marker,'click',function() {
@@ -145,7 +140,7 @@ MapView.toggleFilterDisplay = function() {
     $('#feature-checklist').show();
 
     $('#toggleFilterButton').text('hide');
-  } else { //hide
+  } else {
     $('#googleMap').removeClass('eight').removeClass('columns');
     $('#googleMap').addClass('twelve').addClass('columns');
 

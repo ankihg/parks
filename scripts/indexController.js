@@ -19,7 +19,6 @@
 
     $('#park-info').show();
     $('#googleMap').show();
-    // $('#feature-checklist').show();
   }
 
   module.indexController = indexController;

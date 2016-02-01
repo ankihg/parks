@@ -8,8 +8,6 @@
     $('#events').hide();
     $('#feature-checklist').hide();
     $('#park-page').hide();
-
-
     $('#about-us').show();
   };
 
