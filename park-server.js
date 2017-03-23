@@ -3,8 +3,6 @@ var requestProxy = require('express-request-proxy'),
   port = process.env.PORT || 3000,
   app = express();
 
-console.log("google maps token: " + process.env.GOOGLE_MAPS_TOKEN);
-
 app.use(express.static('./'));
 
 app.get('*', function(request, response) {
