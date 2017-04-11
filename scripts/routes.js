@@ -1,5 +1,7 @@
 "use strict";
-page.base('');
+
+// page.base('');
+page.base('/parkfinder');
 
 page('/', indexController.index);
 page('/volunteer', volunteerController.index);

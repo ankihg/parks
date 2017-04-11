@@ -4,6 +4,7 @@ var requestProxy = require('express-request-proxy'),
   app = express();
 
 app.use(express.static('./'));
+// app.use('/parkfinder', express.static('./'));
 
 app.get('*', function(request, response) {
   console.log('New request:', request.url);
