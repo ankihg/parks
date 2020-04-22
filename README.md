@@ -1,3 +1,5 @@
+# [Check it out](https://seattle-parks-finder.herokuapp.com/)
+
 Contributors
 ------------
 Wenjing Qiang, Annika Hagelin, David Livingstone, Thom Nienow
