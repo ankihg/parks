@@ -1,5 +1,6 @@
 "use strict";
 (function(module) {
+  var google = window.google;
 
   var Park = function(elm) {
     this.name = elm[9];
@@ -11,7 +12,7 @@
     this.address = elm[10];
     this.govURL = elm[11][0];
     this.lng = parseFloat(elm[12]);
-    this.lat = parseFloat(elm[13]);
+    this.lat = parseFloat(elm[13])
   };
 
   Park.all = [];
