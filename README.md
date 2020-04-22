@@ -1,4 +1,4 @@
-# [Check it out](https://seattle-parks-finder.herokuapp.com/)
+[Check it out](https://seattle-parks-finder.herokuapp.com/)
 
 Contributors
 ------------
